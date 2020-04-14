@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import image from '../../assets/photos/friends.svg';
 
 const HomepageContainer = styled(Container)`
-    padding: 0;
+    
 `;
 
 const Title = styled.h1`
