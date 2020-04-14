@@ -1,9 +1,10 @@
 import React from "react";
-import { NavBar } from "./Components/Navbar/Navbar";
+import { Homepage } from './Pages/Homepage/Homepage';
 import "./App.css";
 
+
 const App = () => {
-  return <NavBar />;
+  return <Homepage />;
 };
 
 export default App;

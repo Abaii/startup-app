@@ -1,21 +1,24 @@
 import React from "react";
 import {
-    NavbarWrapper,
+    NavRow,
     Title,
-    NavButtonWrapper,
+    LinkCol,
     LinkText,
     Logo,
 } from "./Navbar.components";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Col } from 'react-bootstrap';
 
-export const NavBar = () => {
+
+export const Navbar = () => {
     return (
-        <NavbarWrapper>
-            <Logo />
-            <Title>Startup</Title>
-            <NavButtonWrapper>
-                <LinkText>Home</LinkText>
-                <LinkText>Join</LinkText>
-            </NavButtonWrapper>
-        </NavbarWrapper>
+        
+            <NavRow>
+                <Col><Logo/></Col>
+                <Col><Title>Startup</Title></Col>
+                <LinkCol><LinkText>Home</LinkText>
+                <LinkText>Join</LinkText></LinkCol>
+            </NavRow>
+     
     );
 };
