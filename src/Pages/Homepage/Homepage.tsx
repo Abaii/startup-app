@@ -26,6 +26,7 @@ const HomepageWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 150px 50px 0 50px;
+    padding: 50px;
     
 `
 
@@ -34,14 +35,14 @@ export const Homepage = () => {
         <HomepageContainer fluid>
             <Navbar />
                 <Row>
-                    <Col lg={5}>
+                    <Col lg={12}>
                         <HomepageWrapper>
                             <Title>Startup</Title>
                             <Subtitle>We are two young G's ready to make a couple billion. If you also want to make a billion then register up.</Subtitle>
                         </HomepageWrapper>
                     </Col>
                     <Col lg={5}>
-                    <HomepageWrapper><img src={image} alt="Social media friends"/></HomepageWrapper>
+                    {/* <HomepageWrapper><img src={image} alt="Social media friends"/></HomepageWrapper> */}
                     </Col>
                 </Row>
             

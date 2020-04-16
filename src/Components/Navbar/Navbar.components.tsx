@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { Col, Row } from 'react-bootstrap';
 
-export const NavRow = styled.div`
-  display: flex;
+export const NavRow = styled(Row)`
+  padding-top: 20px;
   box-shadow: 0 5px 5px -5px rgba(0,0,0,.2);
   justify-content: space-between;
-  padding: 20px;
+
 `;
 
 export const Title = styled.h1`
@@ -23,7 +24,7 @@ export const Logo = styled.div`
     border: 3px black solid;
 `;
 
-export const LinkCol = styled.div`
-    display: flex; 
-    align-items: center;
+export const LinkCol = styled(Col)`
+    display: flex;
+    justify-content: center;
 `;

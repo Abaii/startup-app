@@ -12,13 +12,13 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 export const Navbar = () => {
     return (
-        
+        <Container fluid>
             <NavRow>
-                <Col><Logo/></Col>
-                <Col><Title>Startup</Title></Col>
+                <LinkCol><Logo/></LinkCol>
+                <LinkCol><Title>Startup</Title></LinkCol>
                 <LinkCol><LinkText>Home</LinkText>
                 <LinkText>Join</LinkText></LinkCol>
             </NavRow>
-     
+        </Container>
     );
 };
