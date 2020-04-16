@@ -39,7 +39,7 @@ export const Homepage = () => {
               We are two young G's ready to make a couple billion. If you also
               want to make a billion then register up.
             </Subtitle>
-            <CallToAction>Come be a G too</CallToAction>
+            <CallToAction>Find your creative match</CallToAction>
           </HomepageWrapper>
         </Col>
         <Col lg={5}>
