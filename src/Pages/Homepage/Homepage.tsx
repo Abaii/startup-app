@@ -1,24 +1,23 @@
 import React from "react";
-import styled from 'styled-components';
-import { Navbar } from '../../Components/Navbar/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
-import image from '../../assets/photos/friends.svg';
+import styled from "styled-components";
+import { Navbar } from "../../Components/Navbar/Navbar";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Row, Col } from "react-bootstrap";
+import image from "../../assets/photos/friends.svg";
+import { CallToAction } from "../../Components/Button/Button.components";
 
-const HomepageContainer = styled(Container)`
-    
-`;
+const HomepageContainer = styled(Container)``;
 
 const Title = styled.h1`
-    font-size: 100px;
-    font-weight: bold;
-    line-height: 1.2;
-`
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 1.2;
+`;
 
 const Subtitle = styled.p`
-    line-height: 1.6;
-    opacity: 0.8;
-    font-size: 24px;
+  line-height: 1.6;
+  opacity: 0.8;
+  font-size: 24px;
 `;
 
 const HomepageWrapper = styled.div`
@@ -39,6 +38,8 @@ export const Homepage = () => {
                         <HomepageWrapper>
                             <Title>Startup</Title>
                             <Subtitle>We are two young G's ready to make a couple billion. If you also want to make a billion then register up.</Subtitle>
+                            <CallToAction>Find your creative match</CallToAction>
+
                         </HomepageWrapper>
                     </Col>
                     <Col lg={5}>
