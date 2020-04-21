@@ -3,9 +3,11 @@ import styled from "styled-components";
 
 interface CTAProps {
   color?: string;
+  width?: string;
 }
 
 export const CallToAction = styled.button<CTAProps>`
+  ${({ width }) => width && `width: ${width}`}
   font-size: 16px;
   font-weight: bold;
   color: ${props => props.color ? `${props.color}` : '#fff'};
