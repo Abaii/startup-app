@@ -1,14 +1,16 @@
-import React from 'react';
-import { InputWrapper } from './Input.components';
+import React from "react";
+import { InputWrapper } from "./Input.components";
 interface InputProps {
-    id: string;
-    name: string;
+  id: string;
+  name: string;
+  type: string;
 }
 
 export const Input = (props: InputProps) => {
-    return(<InputWrapper>
-        <input id={props.id} name={props.id}  type="text" required/>
-        <label htmlFor={props.id}>{props.name}</label>
+  return (
+    <InputWrapper>
+      <input id={props.id} name={props.id} type={props.type} required />
+      <label htmlFor={props.id}>{props.name}</label>
     </InputWrapper>
-    )
-}
+  );
+};
