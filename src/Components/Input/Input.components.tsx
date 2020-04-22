@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const InputWrapper = styled.div`
     position: relative;
@@ -25,9 +25,10 @@ export const InputWrapper = styled.div`
         z-index: 1;
     }
 
-    input:focus {
-        outline: 0;
-    }
+
+  input:focus {
+    outline: 0;
+  }
 
     input:focus + label, input:valid + label {
         bottom: 100%;
@@ -36,7 +37,7 @@ export const InputWrapper = styled.div`
         font-size: 1rem;
     }
 
-    input:valid{
-        background: white;
-    }
+  input:valid {
+    background: white;
+  }
 `;
