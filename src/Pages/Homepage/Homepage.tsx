@@ -12,11 +12,12 @@ const Title = styled.h1`
   font-size: 100px;
   font-weight: bold;
   line-height: 1.2;
+  padding: 20px;
 `;
 
 const Subtitle = styled.p`
   line-height: 1.6;
-  opacity: 0.8;
+  opacity: 0.5;
   font-size: 24px;
 `;
 
@@ -36,9 +37,8 @@ export const Homepage = () => {
                 <Row>
                     <Col lg={12}>
                         <HomepageWrapper>
-                            <Title>Startup</Title>
-                            <Subtitle>We are two young G's ready to make a couple billion. If you also want to make a billion then register up.</Subtitle>
-                            <CallToAction>Find your creative match</CallToAction>
+                            <Title>Find your creative match.</Title>
+                            <CallToAction>Get started</CallToAction>
 
                         </HomepageWrapper>
                     </Col>
