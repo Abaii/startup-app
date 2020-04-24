@@ -20,7 +20,7 @@ const registrationFormConfig = {
 };
 
 const registrationRequest = (payload: any) => {
-  return axios.post("localhost:3000/registration", { newUser: payload });
+  return axios.post("http://localhost:3001/register", { newUser: payload });
 };
 
 const registrationResponseHandler = (response: Promise<any>) => {
