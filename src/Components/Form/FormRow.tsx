@@ -9,11 +9,12 @@ interface FormRowProps {
 }
 
 export const FormRow = (props: FormRowProps) => {
+  const { inputs, getInputValue} = props;
   return (
     <FormRowWrapper>
-      {props.inputs.map((input) => (
+      {inputs.map((input) => (
         <Input
-          inputHandler={props.getInputValue}
+          inputHandler={getInputValue}
           name={input.name}
           id={input.id}
           type={input.type}
