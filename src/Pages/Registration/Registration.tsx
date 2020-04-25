@@ -24,7 +24,7 @@ const registrationRequest = (payload: any) => {
 };
 
 const registrationResponseHandler = (response: Promise<any>) => {
-  console.log(response);
+  return response;
 };
 
 export const Registration = () => {
