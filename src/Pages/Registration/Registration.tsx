@@ -3,53 +3,39 @@ import styled from "styled-components";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import { CallToAction } from "../../Components/Button/Button.components";
-import { Input } from "../../Components/Input/Input";
+import { Form } from "../../Components/Form/Form";
+import axios from "axios";
 
 const RegistrationContainer = styled(Container)``;
 
-const RegistrationPageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 150px 20% 0 20%;
-  padding: 50px;
-`;
+const registrationFormConfig = {
+  row1: [
+    { name: "First Name", type: "text", id: "firstName" },
+    { name: "Last Name", type: "text", id: "surname" },
+  ],
+  row2: [{ name: "Email", type: "text", id: "email" }],
+  row3: [{ name: "Role", type: "text", id: "role" }],
+  row4: [{ name: "Password", type: "password", id: "password" }],
+  row5: [{ name: "Confirm Password", type: "password", id: "passwordVerify" }],
+};
 
-const FormRow = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 80%;
-  margin: 0 auto;
-`;
+const registrationRequest = (payload: any) => {
+  return axios.post("http://localhost:3001/register", { newUser: payload });
+};
+
+const registrationResponseHandler = (response: Promise<any>) => {
+  return response;
+};
 
 export const Registration = () => {
   return (
     <RegistrationContainer fluid>
       <Navbar />
-      <RegistrationPageWrapper>
-        <FormRow>
-          <Input name="First Name" type="text" id="firstName" />
-          <Input name="Last Name" type="text" id="surname" />
-        </FormRow>
-        <FormRow>
-          <Input name="Email" type="text" id="email" />
-        </FormRow>
-
-        <FormRow>
-          <Input name="Role" type="text" id="role" />
-        </FormRow>
-
-        <FormRow>
-          <Input name="Password" type="password" id="password" />
-        </FormRow>
-
-        <FormRow>
-          <Input name="Confirm Password" type="password" id="passwordVerify" />
-        </FormRow>
-
-        <CallToAction> Submit </CallToAction>
-      </RegistrationPageWrapper>
+      <Form
+        responseHandler={registrationResponseHandler}
+        submitFunction={registrationRequest}
+        config={registrationFormConfig}
+      />
     </RegistrationContainer>
   );
 };
