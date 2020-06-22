@@ -5,20 +5,32 @@ import {
     LinkCol,
     LinkText,
     Logo,
+    TitleWrapper, NavButtonWrapper,
 } from "./Navbar.components";
+import { CallToAction } from '../Button/Button.components';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 
 export const Navbar = () => {
+    
     return (
-        <Container fluid>
-            <NavRow>
-                <LinkCol><Logo/></LinkCol>
-                <LinkCol><Title>Startup</Title></LinkCol>
-                <LinkCol><LinkText>Home</LinkText>
-                <LinkText>Join</LinkText></LinkCol>
-            </NavRow>
-        </Container>
+        <NavRow>
+            <Col xs={3}>
+                <TitleWrapper>
+                    <Logo />
+                    <Title>Startup</Title>
+                </TitleWrapper>
+            </Col>
+            <Col>
+                <NavButtonWrapper>
+                    <CallToAction clear>Home</CallToAction>
+                    <CallToAction clear>About</CallToAction>
+
+                    <CallToAction>Sign up</CallToAction>
+
+                </NavButtonWrapper>
+            </Col>
+        </NavRow>
     );
 };

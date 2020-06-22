@@ -1,49 +1,59 @@
 import React from "react";
 import styled from "styled-components";
 import { Navbar } from "../../Components/Navbar/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import image from "../../assets/photos/friends.svg";
 import { CallToAction } from "../../Components/Button/Button.components";
 
 const HomepageContainer = styled(Container)``;
 
 const Title = styled.h1`
-  font-size: 100px;
+  font-size: 80px;
   font-weight: bold;
   line-height: 1.2;
+  color: #364e0e;
+  margin-bottom: 2rem;
+
+  & span {
+      color: #BBE774;
+  }
 `;
 
 const Subtitle = styled.p`
   line-height: 1.6;
-  opacity: 0.8;
+  opacity: 0.5;
   font-size: 24px;
+  color: #364e0e;
 `;
 
 const HomepageWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 150px 50px 0 50px;
+    margin: 50px 50px 0 50px;
     padding: 50px;
-    
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    margin-top: 50px;
 `
 
 export const Homepage = () => {
     return(
-        <HomepageContainer fluid>
+        <HomepageContainer>
             <Navbar />
-                <Row>
-                    <Col lg={12}>
-                        <HomepageWrapper>
-                            <Title>Startup</Title>
-                            <Subtitle>We are two young G's ready to make a couple billion. If you also want to make a billion then register up.</Subtitle>
-                            <CallToAction>Find your creative match</CallToAction>
-
-                        </HomepageWrapper>
-                    </Col>
-                    <Col lg={5}>
-                    {/* <HomepageWrapper><img src={image} alt="Social media friends"/></HomepageWrapper> */}
+                <Row >
+                    <Col>
+                       <HomepageWrapper>
+                            <Title>Perfect partners for <span>passionate</span> people</Title>
+                            <Subtitle>Startup is the easiest way for you to find like-minded individiuals to collaborate with on your passion projects.</Subtitle>
+                            <ButtonContainer>
+                                <CallToAction>Sign up for free</CallToAction>
+                                <CallToAction>Find out more</CallToAction>
+                            </ButtonContainer>
+                        </HomepageWrapper> 
+                    
                     </Col>
                 </Row>
             

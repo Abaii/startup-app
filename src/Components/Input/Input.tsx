@@ -10,22 +10,24 @@ interface InputProps {
   name: string;
   type: string;
   inputHandler: (name: string, value: string) => void;
+  placeholder?: string;
 }
 
 export const Input = (props: InputProps) => {
+  const { id, name, type, inputHandler, placeholder } = props;
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    props.inputHandler(e.currentTarget.name, e.currentTarget.value);
+    inputHandler(e.currentTarget.name, e.currentTarget.value);
 
   return (
     <InputWrapper>
       <input
-        id={props.id}
-        name={props.id}
-        type={props.type}
+        id={id}
+        name={id}
+        type={type}
+        placeholder={placeholder}
         onChange={handleInputChange}
         required
       />
-      <label htmlFor={props.id}>{props.name}</label>
     </InputWrapper>
   );
 };
