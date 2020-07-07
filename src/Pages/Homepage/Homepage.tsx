@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import { Navbar } from "../../Components/Navbar/Navbar";
-import { Container, Row, Col } from "react-bootstrap";
-import { CallToAction } from "../../Components/Button/Button.components";
+import React from 'react';
+import styled from 'styled-components';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { CallToAction } from '../../Components/Button/Button.components';
 
 const HomepageContainer = styled(Container)``;
 
@@ -37,26 +37,29 @@ const HomepageWrapper = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     margin-top: 50px;
-`
+`;
 
-export const Homepage = () => {
-    return(
-        <HomepageContainer>
-            <Navbar />
-                <Row >
-                    <Col>
-                       <HomepageWrapper>
-                            <Title>Perfect partners for <span>passionate</span> people</Title>
-                            <Subtitle>Startup is the easiest way for you to find like-minded individiuals to collaborate with on your passion projects.</Subtitle>
-                            <ButtonContainer>
-                                <CallToAction>Sign up for free</CallToAction>
-                                <CallToAction>Find out more</CallToAction>
-                            </ButtonContainer>
-                        </HomepageWrapper> 
-                    
-                    </Col>
-                </Row>
-            
-        </HomepageContainer>
-    )
-};
+export const Homepage = () => (
+  <HomepageContainer>
+    <Navbar />
+    <Row>
+      <Col>
+        <HomepageWrapper>
+          <Title>
+            Perfect partners for
+            <span>passionate</span>
+            {' '}
+            people
+          </Title>
+          <Subtitle>Startup is the easiest way for you to find like-minded individiuals to collaborate with on your passion projects.</Subtitle>
+          <ButtonContainer>
+            <CallToAction>Sign up for free</CallToAction>
+            <CallToAction>Find out more</CallToAction>
+          </ButtonContainer>
+        </HomepageWrapper>
+
+      </Col>
+    </Row>
+
+  </HomepageContainer>
+);

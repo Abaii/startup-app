@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { Col, Row } from 'react-bootstrap';
 
 export const NavRow = styled(Row)`
@@ -18,7 +18,7 @@ export const TitleWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: -0.5rem;
-`
+`;
 export const LinkText = styled.span`
   font-size: 16px;
   font-weight: 300;
@@ -40,4 +40,4 @@ export const LinkCol = styled(Col)`
 export const NavButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-`
+`;

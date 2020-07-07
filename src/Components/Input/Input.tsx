@@ -1,5 +1,5 @@
-import React from "react";
-import { InputWrapper, IconWrapper } from "./Input.components";
+import React from 'react';
+import { InputWrapper, IconWrapper } from './Input.components';
 
 export interface inputValueObject {
   [name: string]: string;
@@ -14,13 +14,14 @@ interface InputProps {
 }
 
 export const Input = (props: InputProps) => {
-  const { id, name, type, inputHandler, placeholder } = props;
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    inputHandler(e.currentTarget.name, e.currentTarget.value);
+  const {
+    id, name, type, inputHandler, placeholder,
+  } = props;
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => inputHandler(e.currentTarget.name, e.currentTarget.value);
 
   return (
     <InputWrapper>
-      
+
       <input
         id={id}
         name={id}

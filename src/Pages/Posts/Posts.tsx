@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import styled from 'styled-components';
 import Card from '../../Components/Card/Card';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import Search from '../../Components/Search/Search';
-import styled from 'styled-components';
 import { tokens } from '../../assets/tokens';
 
 const PostsTitle = styled.h2`
@@ -25,43 +25,41 @@ const PostsSubtitle = styled.h3`
     color: ${tokens.color.tertiaryColor};
 `;
 
-const Posts = () => {
-    return (
-        <Container>
-            <Navbar/>
-            <Row>
-                <Col xs={12}>
-                    <PostsWrapper>
-                        <PostsSubtitle>Find a project you're passionate about.</PostsSubtitle>
-                        <PostsTitle>Projects created by the community.</PostsTitle>
-                        <Search />
-                    </PostsWrapper>
-                </Col>
-            </Row>
-            <Row>
-                <Col lg={4} md={6}>
-                    <Card title="Wagwan g" />
-                    
-                </Col>
-                <Col lg={4} md={6}>
-                    <Card />
-                </Col>
-                <Col lg={4} md={6}>
-                    <Card />
-                </Col>
-                <Col lg={4} md={6}>
-                    <Card />
+const Posts = () => (
+  <Container>
+    <Navbar />
+    <Row>
+      <Col xs={12}>
+        <PostsWrapper>
+          <PostsSubtitle>Find a project you're passionate about.</PostsSubtitle>
+          <PostsTitle>Projects created by the community.</PostsTitle>
+          <Search />
+        </PostsWrapper>
+      </Col>
+    </Row>
+    <Row>
+      <Col lg={4} md={6}>
+        <Card title="Wagwan g" />
 
-                </Col>
-                <Col lg={4} md={6}>
-                    <Card />
-                </Col>
-                <Col lg={4} md={6}>
-                    <Card />
-                </Col>
-            </Row>
-        </Container>
-    )
-};
+      </Col>
+      <Col lg={4} md={6}>
+        <Card />
+      </Col>
+      <Col lg={4} md={6}>
+        <Card />
+      </Col>
+      <Col lg={4} md={6}>
+        <Card />
+
+      </Col>
+      <Col lg={4} md={6}>
+        <Card />
+      </Col>
+      <Col lg={4} md={6}>
+        <Card />
+      </Col>
+    </Row>
+  </Container>
+);
 
 export default Posts;

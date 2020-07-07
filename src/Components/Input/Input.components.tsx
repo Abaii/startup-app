@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const InputWrapper = styled.div`
   flex-grow: 1;
@@ -26,4 +26,4 @@ export const IconWrapper = styled.div`
   height: 20px;
   background-color: inherit;
 
-`
+`;

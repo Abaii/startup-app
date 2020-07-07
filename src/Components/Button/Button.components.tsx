@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 import { tokens } from '../../assets/tokens';
 
 const sharedStyles = css`
@@ -19,7 +19,8 @@ const sharedStyles = css`
     transform: translateY(-2px);
     
   };
-`
+`;
+
 export const CallToAction = styled.button`
   ${sharedStyles}
   border: 1px solid ${tokens.color.primaryColor};
@@ -31,4 +32,4 @@ export const SecondaryButton = styled.button`
   ${sharedStyles};
   background: none;
   border: none;
-`
+`;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const FormWrapper = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ export const FormTitleWrapper = styled.div`
   margin: 0 auto;
   
 
-`
+`;
 export const FormTitle = styled.h1`
   font-size: 32px;
   margin-top: 20px;

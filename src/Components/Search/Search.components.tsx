@@ -16,5 +16,4 @@ export const SearchInput = styled.input`
     &:focus {
         color: blue;
     }
-`
-
+`;

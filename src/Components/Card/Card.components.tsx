@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { tokens } from '../../assets/tokens';
+
 export const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -52,4 +53,4 @@ export const Divider = styled.div`
     border-top: 2px solid grey;
     height: 1px;
     margin: 10px 0;
-`
+`;
