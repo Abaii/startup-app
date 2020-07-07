@@ -7,7 +7,7 @@ import {
     Logo,
     TitleWrapper, NavButtonWrapper,
 } from "./Navbar.components";
-import { CallToAction } from '../Button/Button.components';
+import { CallToAction, SecondaryButton } from '../Button/Button.components';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col } from 'react-bootstrap';
 
@@ -24,9 +24,8 @@ export const Navbar = () => {
             </Col>
             <Col>
                 <NavButtonWrapper>
-                    <CallToAction clear>Home</CallToAction>
-                    <CallToAction clear>About</CallToAction>
-
+                    <SecondaryButton>Home</SecondaryButton>
+                    <SecondaryButton>Posts</SecondaryButton>
                     <CallToAction>Sign up</CallToAction>
 
                 </NavButtonWrapper>

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { SearchbarWrapper, SearchInput, SearchContainer } from './Search.components';
+import { SearchbarWrapper, SearchContainer } from './Search.components';
 import { Input } from '../Input/Input';
 import { CallToAction as Button } from '../Button/Button.components';
 
 
 const Searchbar = () => {
     const [search, setSearch] = useState('');
-    const handleInput = (name: string, value: string) => {
+    const handleInput = (value: string) => {
         setSearch(value);
     }
     return (
         <SearchContainer>
             <SearchbarWrapper>
-                <Input id="search" name="posts" type="text" inputHandler={handleInput} placeholder="Search for your product"/>
-                <Button clear>Search!</Button>
+                <Input id="search" name="posts" type="text" inputHandler={(value: string) => handleInput(value)} placeholder="Enter keywords, e.g name of company"/>
+                <Button>Find a project</Button>
             </SearchbarWrapper>
         </SearchContainer>
     )

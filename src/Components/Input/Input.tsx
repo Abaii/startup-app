@@ -1,5 +1,5 @@
 import React from "react";
-import { InputWrapper } from "./Input.components";
+import { InputWrapper, IconWrapper } from "./Input.components";
 
 export interface inputValueObject {
   [name: string]: string;
@@ -20,6 +20,7 @@ export const Input = (props: InputProps) => {
 
   return (
     <InputWrapper>
+      
       <input
         id={id}
         name={id}

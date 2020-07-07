@@ -4,42 +4,59 @@ import Card from '../../Components/Card/Card';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import Search from '../../Components/Search/Search';
 import styled from 'styled-components';
+import { tokens } from '../../assets/tokens';
 
 const PostsTitle = styled.h2`
-    margin: 20px auto;
-    font-size: 62px;    
+    margin: 30px auto;
+    font-size: 52px; 
+    font-weight: bold;
 `;
 
 const PostsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px 0;
-`
+    text-align: center;
+    margin: 150px 0 50px 0;
+`;
+
+const PostsSubtitle = styled.h3`
+    font-size: 24px;
+    color: ${tokens.color.tertiaryColor};
+`;
+
 const Posts = () => {
     return (
-        <Container fluid>
+        <Container>
             <Navbar/>
             <Row>
-                <Col>
+                <Col xs={12}>
                     <PostsWrapper>
-                        <PostsTitle>Posts</PostsTitle>
+                        <PostsSubtitle>Find a project you're passionate about.</PostsSubtitle>
+                        <PostsTitle>Projects created by the community.</PostsTitle>
                         <Search />
                     </PostsWrapper>
                 </Col>
             </Row>
             <Row>
-                <Col lg={3} md={6}>
-                    <Card />
+                <Col lg={4} md={6}>
+                    <Card title="Wagwan g" />
                     
                 </Col>
-                <Col lg={3} md={6}>
+                <Col lg={4} md={6}>
                     <Card />
                 </Col>
-                <Col lg={3} md={6}>
+                <Col lg={4} md={6}>
                     <Card />
                 </Col>
-                <Col lg={3} md={6}>
+                <Col lg={4} md={6}>
+                    <Card />
+
+                </Col>
+                <Col lg={4} md={6}>
+                    <Card />
+                </Col>
+                <Col lg={4} md={6}>
                     <Card />
                 </Col>
             </Row>

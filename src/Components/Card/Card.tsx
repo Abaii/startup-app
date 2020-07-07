@@ -1,15 +1,23 @@
 import React from 'react';
-import { CardWrapper, Title, Icon, Subtitle, Footer, Divider } from './Card.components';
+import { CardWrapper, Title, Icon, Subtitle, Footer, Divider, FooterText} from './Card.components';
 
-const Card = () => {
+interface CardProps { 
+    title?: string;
+    description?: string;
+}
+const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna nisl, suscipit eget orci fermentum, venenatis ornare augue. Aliquam rutrum venenatis cursus.';
+
+const Card = (props: CardProps) => {
+
+    const { title, description } = props;
     return (
         <CardWrapper>
             <Icon/>
-            <Title>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna nisl, suscipit eget orci fermentum, venenatis ornare augue. Aliquam rutrum venenatis cursus. </Title>
-            <Subtitle>This is the sub title</Subtitle>
+            <Title>{title || 'Company name'}</Title>
+            <Subtitle>{ description || text}</Subtitle>
             <Divider/>
             <Footer>
-
+                <FooterText>Go to company -></FooterText>
             </Footer>
         </CardWrapper>
     )

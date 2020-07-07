@@ -1,36 +1,34 @@
 import styled, { css } from "styled-components";
+import { tokens } from '../../assets/tokens';
 
-
-interface CTAProps {
-  color?: string;
-  clear?: boolean;
-}
-
-const primaryButtonStyles = css`
-  background: none;
-  color: black;
-`
-const tertiaryButtonStyles = css`
-  background: #BBE774;
-  border: 1px solid #BBE774;
-  color: black;
-`;
-export const CallToAction = styled.button<CTAProps>`
+const sharedStyles = css`
   font-size: 16px;
   font-weight: bold;
-  color: ${props => props.color ? `${props.color}` : '#fff'};
-  cursor: pointer;
-  ${({clear}) => clear ? `${primaryButtonStyles}` : `${tertiaryButtonStyles}` };
-  
   line-height: 1.5;
   padding: 0.3em 2em;
   margin-left: 20px;
   transition: all 0.2s ease-in-out;
+  color: ${tokens.color.secondaryColor};
+  border-radius: 5%;
+  cursor: pointer;
+  
   &:focus {
-    outline:none;
+    outline: none;
   }
-  &:hover{
+  &:hover {
     transform: translateY(-2px);
     
-  }
+  };
+`
+export const CallToAction = styled.button`
+  ${sharedStyles}
+  border: 1px solid ${tokens.color.primaryColor};
+  color: ${tokens.color.primaryColor};
+  background-color: ${tokens.color.tertiaryColor};
 `;
+
+export const SecondaryButton = styled.button`
+  ${sharedStyles};
+  background: none;
+  border: none;
+`

@@ -18,6 +18,7 @@ export const FormRow = (props: FormRowProps) => {
           name={input.name}
           id={input.id}
           type={input.type}
+          placeholder={input.name}
         />
       ))}
     </FormRowWrapper>

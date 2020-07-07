@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { Navbar } from "../../Components/Navbar/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import { Form } from "../../Components/Form/Form";
 import axios from "axios";
+import { Row, Col } from 'react-bootstrap';
 
-const RegistrationContainer = styled(Container)``;
+const RegistrationContainer = styled(Container)`
+  height: 100vh;
+`;
 
+const RegistrationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+`
 const registrationFormConfig = {
   row1: [
     { name: "First Name", type: "text", id: "firstName" },
@@ -29,13 +37,21 @@ const registrationResponseHandler = (response: Promise<any>) => {
 
 export const Registration = () => {
   return (
-    <RegistrationContainer fluid>
+    <RegistrationContainer>
       <Navbar />
-      <Form
-        responseHandler={registrationResponseHandler}
-        submitFunction={registrationRequest}
-        config={registrationFormConfig}
-      />
+      <RegistrationWrapper>
+        <Row className="justify-content-center">
+          <Col  lg={10} xl={8}>
+            <Form
+              title={"Enter your details"}
+              buttonText={"Create account"}
+              responseHandler={registrationResponseHandler}
+              submitFunction={registrationRequest}
+              config={registrationFormConfig}
+            />
+          </Col>
+        </Row>
+      </RegistrationWrapper>
     </RegistrationContainer>
   );
 };

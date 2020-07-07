@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { tokens } from '../../assets/tokens';
 export const CardWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -7,17 +7,27 @@ export const CardWrapper = styled.div`
     padding: 20px;
     max-width: 400px;
     margin: 0 auto;
+    height: 320px;
+    border-radius: 2%;
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    color: ${tokens.color.secondaryColor};
 `;
 
 export const Title = styled.h1`
     font-size: 24px;
     font-weight: bold;
+    letter-spacing: 1.2px;
     margin: 20px 0;
+    line-height: 1.6;
 `;
 
 export const Subtitle = styled.h3`
-    font-size: 18px;
+    font-size: 16px;
     opacity: 0.8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    
 `;
 
 export const Icon = styled.div`
@@ -29,13 +39,17 @@ export const Icon = styled.div`
 
 export const Footer = styled.div`
     display: flex;
-    padding: 10px;
+    align-items: center;
 `;
 
-export const FooterText = styled.div`
-
+export const FooterText = styled.span`
+    font-size: 14px;
+    line-height: 1.6;
+    font-weight: bold;
 `;
 
-export const Divider = styled.hr`
-    border-top: 10px solid grey;
+export const Divider = styled.div`
+    border-top: 2px solid grey;
+    height: 1px;
+    margin: 10px 0;
 `

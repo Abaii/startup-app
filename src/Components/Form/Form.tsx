@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormWrapper } from "./Form.components";
+import { FormWrapper, FormTitle, Footer, FormTitleWrapper } from "./Form.components";
 import { FormRow } from "./FormRow";
 import { CallToAction } from "../../Components/Button/Button.components";
 
@@ -17,10 +17,12 @@ interface FormProps {
   config: FormConfig;
   submitFunction: (payload: any) => Promise<any>;
   responseHandler: (response: any) => void;
+  title: string;
+  buttonText: string;
 }
 
 export const Form = (props: FormProps) => {
-  const { submitFunction, config, responseHandler } = props;
+  const { submitFunction, config, responseHandler, title, buttonText} = props;
   const rows = Object.keys(config);
   const [payload, updatePayload] = useState({});
 
@@ -37,6 +39,7 @@ export const Form = (props: FormProps) => {
 
   return (
     <FormWrapper>
+      <FormTitleWrapper><FormTitle>{title}</FormTitle></FormTitleWrapper>
       {rows.map((rowKey) => {
         return (
           <FormRow
@@ -45,7 +48,7 @@ export const Form = (props: FormProps) => {
           ></FormRow>
         );
       })}
-      <CallToAction onClick={onSubmit} />
+      <Footer><CallToAction onClick={onSubmit}>{buttonText}</CallToAction></Footer>
     </FormWrapper>
   );
 };

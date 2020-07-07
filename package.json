@@ -28,15 +28,16 @@
   },
   "lint-staged": {
     "*.js": [
-      "./node_modules/.bin/eslint — fix",
-      "git add"
+      "eslint --fix",
+      "git add ."
     ]
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "./node_modules/.bin/eslint"
   },
   "eslintConfig": {
     "extends": "react-app"
