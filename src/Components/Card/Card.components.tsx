@@ -28,7 +28,6 @@ export const Subtitle = styled.h3`
     opacity: 0.8;
     line-height: 1.6;
     margin-bottom: 20px;
-    
 `;
 
 export const Icon = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { Form } from '../../Components/Form/Form';
-
+import { Title, FooterText, FooterSpan, Footer } from './Registration.components';
 import { Navbar } from '../../Components/Navbar/Navbar';
 
 const RegistrationContainer = styled(Container)`
@@ -37,15 +37,23 @@ export const Registration = () => (
     <RegistrationWrapper>
       <Row className="justify-content-center">
         <Col lg={10} xl={8}>
+          <Title>Sign up to get started.</Title>
+        </Col>
+        <Col lg={10} xl={8}>
           <Form
-            title="Enter your details"
             buttonText="Create account"
             responseHandler={registrationResponseHandler}
             submitFunction={registrationRequest}
             config={registrationFormConfig}
           />
         </Col>
+        <Col lg={10} xl={8}>
+          <Footer>
+            <FooterText>Already got an account? <FooterSpan>Sign up</FooterSpan></FooterText>
+          </Footer>
+        </Col>
       </Row>
+
     </RegistrationWrapper>
   </RegistrationContainer>
 );

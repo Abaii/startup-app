@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useContext, createContext } from "react";
 import { createGlobalStyle } from 'styled-components';
 import { Homepage } from './Pages/Homepage/Homepage';
 import { Registration } from './Pages/Registration/Registration';
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import AuthenticatedApp from './Pages/App/AuthenticatedApp';
+import { UnauthenticatedApp } from './Pages/App/UnauthenticatedApp';
 
 import Posts from './Pages/Posts/Posts';
 const GlobalStyle = createGlobalStyle`
@@ -14,18 +16,29 @@ const GlobalStyle = createGlobalStyle`
     --secondary-color: '#e6e8f2';
     --third-color:'#4bd6f2';
     background-color: var(--secondary-color);
-` 
-const primaryColor ='#00ad37';
-const secondaryColor = '#f2fff7';
-const thirdColor = '#4dbf1d';
+`;
 
-
+interface User {
+  username: string;
+  loggedIn: boolean;
+}
 const App = () => {
+
+  const [user, setUser] = useState<User | null>(null);
+
+  const UserContext = createContext(null);
+  
   return (
-  <>
+  <Router>
     <GlobalStyle/>
-    <Registration />
-  </>
+    <Switch>
+        <Route path='/' exact component={Homepage} />
+        <Route path='/posts' exact component={Posts} />
+        <Route path='/register' exact component={Registration} />
+    </Switch>
+      
+    
+  </Router>
   )
 };
 

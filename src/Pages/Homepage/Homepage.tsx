@@ -3,18 +3,19 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { CallToAction } from '../../Components/Button/Button.components';
+import { tokens } from '../../assets/tokens';
 
 const HomepageContainer = styled(Container)``;
 
 const Title = styled.h1`
-  font-size: 80px;
+  font-size: 6vw;
   font-weight: bold;
   line-height: 1.2;
-  color: #364e0e;
   margin-bottom: 2rem;
-
+  color: ${tokens.color.tertiaryColor};
+  
   & span {
-      color: #BBE774;
+    color: #20D5C9;
   }
 `;
 
@@ -22,6 +23,7 @@ const Subtitle = styled.p`
   line-height: 1.6;
   opacity: 0.5;
   font-size: 24px;
+  font-weight: 200;
   color: #364e0e;
 `;
 
@@ -47,11 +49,13 @@ export const Homepage = () => (
         <HomepageWrapper>
           <Title>
             Perfect partners for
-            <span>passionate</span>
+            <span> passionate</span>
             {' '}
             people
           </Title>
-          <Subtitle>Startup is the easiest way for you to find like-minded individiuals to collaborate with on your passion projects.</Subtitle>
+          <Subtitle>You have a passion. However, not all of us can achieve big things on our own. Startup serves as a platform for you to connect with others
+            who have a skillset and share your passions in order to achieve something great.
+          </Subtitle>
           <ButtonContainer>
             <CallToAction>Sign up for free</CallToAction>
             <CallToAction>Find out more</CallToAction>

@@ -9,22 +9,22 @@ export const FormWrapper = styled.div`
 export const FormRowWrapper = styled.div`
   display: flex;
   width: 80%;
-  margin: 0 auto;
+  margin: 5px auto;
 `;
 
 export const FormTitleWrapper = styled.div`
   display: flex;
   width: 80%;
-  margin: 0 auto;
-  
-
+  margin: 20px auto;
 `;
 export const FormTitle = styled.h1`
   font-size: 32px;
   margin-top: 20px;
-  padding-left: 8px;
+  padding-left: 14px;
+  font-weight: bold;
 `;
 
 export const Footer = styled.div`
-   margin: 40px auto;
+  margin: 40px auto;
 `;
+

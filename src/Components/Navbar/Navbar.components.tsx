@@ -5,7 +5,9 @@ export const NavRow = styled(Row)`
   padding-top: 20px;
   box-shadow: 0 1px 1px -2px rgba(0,0,0,.2);
   justify-content: space-between;
-
+  a {
+    color: inherit;
+  }
 `;
 
 export const Title = styled.h1`

@@ -2,15 +2,12 @@ import React from 'react';
 import {
   NavRow,
   Title,
-  LinkCol,
-  LinkText,
   Logo,
   TitleWrapper, NavButtonWrapper,
 } from './Navbar.components';
 import { CallToAction, SecondaryButton } from '../Button/Button.components';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col } from 'react-bootstrap';
-
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => (
   <NavRow>
@@ -22,9 +19,9 @@ export const Navbar = () => (
     </Col>
     <Col>
       <NavButtonWrapper>
-        <SecondaryButton>Home</SecondaryButton>
-        <SecondaryButton>Posts</SecondaryButton>
-        <CallToAction>Sign up</CallToAction>
+        <SecondaryButton><Link to='/'>Home</Link></SecondaryButton>
+        <SecondaryButton><Link to='/posts'>Posts</Link></SecondaryButton>
+        <CallToAction><Link to='/register'>Sign up</Link></CallToAction>
 
       </NavButtonWrapper>
     </Col>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  FormWrapper, FormTitle, Footer, FormTitleWrapper,
+  FormWrapper, FormTitle, Footer, FormTitleWrapper
 } from './Form.components';
 import { FormRow } from './FormRow';
 import { CallToAction } from '../../Components/Button/Button.components';
@@ -19,7 +19,7 @@ interface FormProps {
   config: FormConfig;
   submitFunction: (payload: any) => Promise<any>;
   responseHandler: (response: any) => void;
-  title: string;
+  title?: string;
   buttonText: string;
 }
 
@@ -43,14 +43,16 @@ export const Form = (props: FormProps) => {
 
   return (
     <FormWrapper>
-      <FormTitleWrapper><FormTitle>{title}</FormTitle></FormTitleWrapper>
+      <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>
       {rows.map((rowKey) => (
         <FormRow
           getInputValue={updateInputValue}
           inputs={config[rowKey]}
         />
       ))}
-      <Footer><CallToAction onClick={onSubmit}>{buttonText}</CallToAction></Footer>
+      <Footer>
+          <CallToAction onClick={onSubmit}>{buttonText}</CallToAction>
+      </Footer>
     </FormWrapper>
   );
 };

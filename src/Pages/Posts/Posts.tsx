@@ -10,6 +10,7 @@ const PostsTitle = styled.h2`
     margin: 30px auto;
     font-size: 52px; 
     font-weight: bold;
+    color: ${tokens.color.tertiaryColor};
 `;
 
 const PostsWrapper = styled.div`
@@ -22,7 +23,7 @@ const PostsWrapper = styled.div`
 
 const PostsSubtitle = styled.h3`
     font-size: 24px;
-    color: ${tokens.color.tertiaryColor};
+    color: ${tokens.color.secondaryColor};
 `;
 
 const Posts = () => (

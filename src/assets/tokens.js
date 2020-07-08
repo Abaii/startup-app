@@ -1,7 +1,7 @@
 export const tokens = {
   color: {
-    secondaryColor: 'rgb(17, 17, 17)',
+    secondaryColor: '#262835',
     primaryColor: '#e6e8f2',
-    tertiaryColor: '#4bd6f2',
+    tertiaryColor: '#18A097',
   },
 };
