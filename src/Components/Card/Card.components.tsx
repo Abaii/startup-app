@@ -32,7 +32,7 @@ export const Subtitle = styled.h3`
 
 export const Icon = styled.div`
     width: 30px;
-    height: 30px;
+    min-height: 30px;
     border: 2px solid black;
     border-radius: 50%;
 `;

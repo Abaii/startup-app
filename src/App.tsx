@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 import { Homepage } from './Pages/Homepage/Homepage';
 import { Registration } from './Pages/Registration/Registration';
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'; 
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { UserContext } from './hooks/UserContext';
 import AuthenticatedApp from './Pages/App/AuthenticatedApp';
 import { UnauthenticatedApp } from './Pages/App/UnauthenticatedApp';
 
@@ -18,23 +19,26 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--secondary-color);
 `;
 
-interface User {
+export interface User {
   username: string;
-  loggedIn: boolean;
+  email: string;
 }
+
 const App = () => {
 
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>({
+    username: 'fake user',
+    email: 'fake@user.com',
+  });
 
-  const UserContext = createContext(null);
-  
+
   return (
   <Router>
     <GlobalStyle/>
     <Switch>
-        <Route path='/' exact component={Homepage} />
-        <Route path='/posts' exact component={Posts} />
-        <Route path='/register' exact component={Registration} />
+      <UserContext.Provider value={{ user, setUser }}>
+        {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      </UserContext.Provider>
     </Switch>
       
     

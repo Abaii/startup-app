@@ -1,16 +1,14 @@
 import React from 'react';
-import { Registration } from '../Registration/Registration';
-import { Route, Switch } from 'react-router-dom';
+import { Homepage } from '../Homepage/Homepage';
+import { Route } from 'react-router-dom';
 
 export const UnauthenticatedApp = () => {
     return (
-        <Switch>
-            <Route path="/">
-                <div>Unauthenticated</div>
+        <>
+            <Route path='/' exact component={Homepage} />
+            <Route path='/'>
+                <div>unauthenticated mate</div>
             </Route>
-            <Route path="/register">
-                <Registration />
-            </Route>
-        </Switch>
+        </>
     )
 }

@@ -15,7 +15,7 @@ const Card = (props: CardProps) => {
     <CardWrapper>
       <Icon />
       <Title>{title || 'Company name'}</Title>
-      <Subtitle>{ description || text}</Subtitle>
+      <Subtitle>{ description || text }</Subtitle>
       <Divider />
       <Footer>
         <FooterText>Go to company</FooterText>

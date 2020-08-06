@@ -6,7 +6,6 @@ const sharedStyles = css`
   font-weight: bold;
   line-height: 1.5;
   padding: 0.5em 2em;
-  margin-left: 20px;
   transition: all 0.2s ease-in-out;
   color: ${tokens.color.secondaryColor};
   border-radius: 10px;
