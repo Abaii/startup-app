@@ -43,7 +43,7 @@ export const Form = (props: FormProps) => {
 
   return (
     <FormWrapper>
-      <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>
+      {title && <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>}
       {rows.map((rowKey) => (
         <FormRow
           getInputValue={updateInputValue}

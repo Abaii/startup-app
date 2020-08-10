@@ -1,14 +1,12 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { createGlobalStyle } from 'styled-components';
-import { Homepage } from './Pages/Homepage/Homepage';
-import { Registration } from './Pages/Registration/Registration';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { UserContext } from './hooks/UserContext';
 import AuthenticatedApp from './Pages/App/AuthenticatedApp';
 import { UnauthenticatedApp } from './Pages/App/UnauthenticatedApp';
+import axios from "axios";
 
-import Posts from './Pages/Posts/Posts';
 const GlobalStyle = createGlobalStyle`
   font-family: 'Baloo Bhaina 2',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -25,12 +23,12 @@ export interface User {
 }
 
 const App = () => {
-
-  const [user, setUser] = useState<User | null>({
-    username: 'fake user',
-    email: 'fake@user.com',
-  });
-
+  
+  const [user, setUser] = useState<User | null>(null);
+  useEffect(() => {
+    console.log(user)
+    axios.get('http://localhost:3001/whoami', { withCredentials: true }).then(response => setUser(response.data)).catch(err => setUser(null))
+  }, [])
 
   return (
   <Router>

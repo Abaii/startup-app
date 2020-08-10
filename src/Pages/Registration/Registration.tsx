@@ -37,19 +37,17 @@ export const Registration = () => (
     <RegistrationWrapper>
       <Row className="justify-content-center">
         <Col lg={10} xl={8}>
-          <Title>Sign up to get started.</Title>
-        </Col>
-        <Col lg={10} xl={8}>
           <Form
             buttonText="Create account"
             responseHandler={registrationResponseHandler}
             submitFunction={registrationRequest}
             config={registrationFormConfig}
+            title="Sign up to get started."
           />
         </Col>
         <Col lg={10} xl={8}>
           <Footer>
-            <FooterText>Already got an account? <FooterSpan>Sign up</FooterSpan></FooterText>
+            <FooterText>Already got an account? <FooterSpan>Log in</FooterSpan></FooterText>
           </Footer>
         </Col>
       </Row>

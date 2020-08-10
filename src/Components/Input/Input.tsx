@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputWrapper, IconWrapper } from './Input.components';
+import { StyledInput } from './Input.components';
 
 export interface inputValueObject {
   [name: string]: string;
@@ -20,9 +20,7 @@ export const Input = (props: InputProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => inputHandler(e.currentTarget.name, e.currentTarget.value);
 
   return (
-    <InputWrapper>
-
-      <input
+      <StyledInput
         id={id}
         name={id}
         type={type}
@@ -30,6 +28,6 @@ export const Input = (props: InputProps) => {
         onChange={handleInputChange}
         required
       />
-    </InputWrapper>
+
   );
 };
