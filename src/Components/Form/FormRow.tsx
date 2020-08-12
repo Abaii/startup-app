@@ -1,7 +1,7 @@
-import React from "react";
-import { FormRowWrapper } from "./Form.components";
-import { InputProperties } from "./Form";
-import { Input } from "../Input/Input";
+import React from 'react';
+import { FormRowWrapper } from './Form.components';
+import { InputProperties } from './Form';
+import { Input } from '../Input/Input';
 
 interface FormRowProps {
   inputs: InputProperties[];
@@ -9,7 +9,7 @@ interface FormRowProps {
 }
 
 export const FormRow = (props: FormRowProps) => {
-  const { inputs, getInputValue} = props;
+  const { inputs, getInputValue } = props;
   return (
     <FormRowWrapper>
       {inputs.map((input) => (
@@ -18,6 +18,7 @@ export const FormRow = (props: FormRowProps) => {
           name={input.name}
           id={input.id}
           type={input.type}
+          placeholder={input.name}
         />
       ))}
     </FormRowWrapper>

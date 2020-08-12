@@ -1,7 +1,9 @@
-import React, { useState } from "react";
-import { FormWrapper } from "./Form.components";
-import { FormRow } from "./FormRow";
-import { CallToAction } from "../../Components/Button/Button.components";
+import React, { useState } from 'react';
+import {
+  FormWrapper, FormTitle, Footer, FormTitleWrapper
+} from './Form.components';
+import { FormRow } from './FormRow';
+import { CallToAction } from '../../Components/Button/Button.components';
 
 export interface InputProperties {
   name: string;
@@ -16,17 +18,21 @@ interface FormConfig {
 interface FormProps {
   config: FormConfig;
   submitFunction: (payload: any) => Promise<any>;
-  responseHandler: (response: any) => void;
+  responseHandler: (response: any, payload?: any) => void;
+  title?: string;
+  buttonText: string;
 }
 
 export const Form = (props: FormProps) => {
-  const { submitFunction, config, responseHandler } = props;
+  const {
+    submitFunction, config, responseHandler, title, buttonText,
+  } = props;
   const rows = Object.keys(config);
   const [payload, updatePayload] = useState({});
 
   const onSubmit = async () => {
     const result = await submitFunction(payload);
-    responseHandler(result);
+    responseHandler(result, payload);
     return result;
   };
 
@@ -37,15 +43,16 @@ export const Form = (props: FormProps) => {
 
   return (
     <FormWrapper>
-      {rows.map((rowKey) => {
-        return (
-          <FormRow
-            getInputValue={updateInputValue}
-            inputs={config[rowKey]}
-          ></FormRow>
-        );
-      })}
-      <CallToAction onClick={onSubmit} />
+      {title && <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>}
+      {rows.map((rowKey) => (
+        <FormRow
+          getInputValue={updateInputValue}
+          inputs={config[rowKey]}
+        />
+      ))}
+      <Footer>
+          <CallToAction onClick={onSubmit}>{buttonText}</CallToAction>
+      </Footer>
     </FormWrapper>
   );
 };

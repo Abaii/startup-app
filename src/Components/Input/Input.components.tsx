@@ -1,49 +1,23 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const InputWrapper = styled.div`
-  flex-grow: 1;
-  position: relative;
-  margin: 20px 10px;
-  padding: 5px;
-  box-shadow: inset rgba(108, 108, 155, 0.5);
+export const StyledInput = styled.input`
+  background-color: oldlace;
+  border-radius: 10px;
+  border-width: 0;
+  font-size: 1.6rem;
+  margin: 2px;
+  z-index: 1;
+  padding: 10px;
+  width: 100%;
+
   &:focus {
-    background-color: black;
-  }
-  label {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 10px;
-    width: 100%;
-    transition: 0.2s;
-    color: grey;
-    text-transform: capitalize;
-    font-size: 1.5rem;
-  }
-
-  input {
-    border-radius: 10px 10px;
-    background-color: rgb(232, 240, 254);
-    border-width: 0;
-    font-size: 1.5em;
-    margin: 2px;
-    z-index: 1;
-    width: 100%;
-  }
-
-  input:focus {
     outline: 0;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(58, 151, 212, 0.36) 0px 0px 0px 4px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px  
   }
+`;
 
-  input:focus + label,
-  input:valid + label {
-    bottom: 100%;
-    left: 10px;
-    margin-top: -17px;
-    font-size: 1rem;
-  }
-
-  input:valid {
-    background: white;
-  }
+export const IconWrapper = styled.div`
+  width: 20px;
+  height: 20px;
+  background-color: inherit;
 `;

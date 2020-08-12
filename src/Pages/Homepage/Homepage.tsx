@@ -1,52 +1,72 @@
-import React from "react";
-import styled from "styled-components";
-import { Navbar } from "../../Components/Navbar/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "react-bootstrap";
-import image from "../../assets/photos/friends.svg";
-import { CallToAction } from "../../Components/Button/Button.components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Navbar } from '../../Components/Navbar/Navbar';
+import { CallToAction } from '../../Components/Button/Button.components';
+import { tokens } from '../../assets/tokens';
+import { UserContext } from '../../hooks/UserContext';
+
 
 const HomepageContainer = styled(Container)``;
 
 const Title = styled.h1`
-  font-size: 100px;
-  font-weight: bold;
-  line-height: 1.2;
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  color: ${tokens.color.secondaryColor};
+  span {
+    opacity: 0.5;
+  }
 `;
 
 const Subtitle = styled.p`
-  line-height: 1.6;
+  line-height: 1.8;
   opacity: 0.8;
   font-size: 24px;
+  font-weight: 200;
+  color: ${tokens.color.secondaryColor};
 `;
 
 const HomepageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center;
-    margin: 150px 50px 0 50px;
-    padding: 50px;
-    
-`
+    justify-content: center;
+    margin-top: 100px;
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    margin-top: 50px;
+`;
 
 export const Homepage = () => {
-    return(
-        <HomepageContainer fluid>
-            <Navbar />
-                <Row>
-                    <Col lg={12}>
-                        <HomepageWrapper>
-                            <Title>Startup</Title>
-                            <Subtitle>We are two young G's ready to make a couple billion. If you also want to make a billion then register up.</Subtitle>
-                            <CallToAction>Find your creative match</CallToAction>
+  const val = useContext(UserContext);
 
-                        </HomepageWrapper>
-                    </Col>
-                    <Col lg={5}>
-                    {/* <HomepageWrapper><img src={image} alt="Social media friends"/></HomepageWrapper> */}
-                    </Col>
-                </Row>
-            
-        </HomepageContainer>
-    )
-};
+  return (
+    <HomepageContainer>
+      <Navbar />
+      <Row>
+        <Col>
+          <HomepageWrapper>
+            <Title>
+              Perfect partners for
+            <span> passionate</span>
+            {' '}
+            people
+          </Title>
+            <Subtitle>You have a passion. However, not all of us can achieve big things on our own. Startup serves as a platform for you to connect with others
+            who have a skillset and share your passions in order to achieve something great.
+          </Subtitle>
+            <ButtonContainer>
+              <CallToAction>Sign up for free</CallToAction>
+              <CallToAction>Find out more</CallToAction>
+            </ButtonContainer>
+          </HomepageWrapper>
+
+        </Col>
+      </Row>
+
+    </HomepageContainer>
+  );
+}
