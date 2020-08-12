@@ -32,7 +32,7 @@ export const Login = ({ logUserIn }: LoginProps) => {
     
     const loginResponseHandler = async (response: Promise<User>) => {
         const { username, email } = await response;
-        logUserIn({ username, email});
+        logUserIn({ username, email });
     };
 
     return (

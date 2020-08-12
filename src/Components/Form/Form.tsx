@@ -18,7 +18,7 @@ interface FormConfig {
 interface FormProps {
   config: FormConfig;
   submitFunction: (payload: any) => Promise<any>;
-  responseHandler: (response: any) => void;
+  responseHandler: (response: any, payload?: any) => void;
   title?: string;
   buttonText: string;
 }
@@ -32,7 +32,7 @@ export const Form = (props: FormProps) => {
 
   const onSubmit = async () => {
     const result = await submitFunction(payload);
-    responseHandler(result);
+    responseHandler(result, payload);
     return result;
   };
 
