@@ -5,16 +5,22 @@ import { Navbar } from '../../Components/Navbar/Navbar';
 import { CallToAction } from '../../Components/Button/Button.components';
 import { tokens } from '../../assets/tokens';
 import { UserContext } from '../../hooks/UserContext';
+import { Link } from 'react-router-dom';
 
 
-const HomepageContainer = styled(Container)``;
+const HomepageContainer = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+`;
 
 const Title = styled.h1`
-  font-size: 56px;
-  font-weight: 900;
+  font-size: 42px;
+  font-weight: 600;
   line-height: 1.3;
   margin-bottom: 2rem;
   color: ${tokens.color.secondaryColor};
+  letter-spacing: 1.4px;
   span {
     opacity: 0.5;
   }
@@ -23,7 +29,7 @@ const Title = styled.h1`
 const Subtitle = styled.p`
   line-height: 1.8;
   opacity: 0.8;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 200;
   color: ${tokens.color.secondaryColor};
 `;
@@ -32,12 +38,17 @@ const HomepageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 100px;
 `;
 
 export const ButtonContainer = styled.div`
     display: flex;
-    margin-top: 50px;
+    margin-top: 20px;
+`;
+
+const ContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 2;
 `;
 
 export const Homepage = () => {
@@ -46,26 +57,27 @@ export const Homepage = () => {
   return (
     <HomepageContainer>
       <Navbar />
-      <Row>
-        <Col>
-          <HomepageWrapper>
-            <Title>
-              Perfect partners for
+      <ContentWrapper>
+        <Row>
+          <Col xs={8}>
+            <HomepageWrapper>
+              <Title>
+                Perfect partners for
             <span> passionate</span>
-            {' '}
+                {' '}
             people
           </Title>
-            <Subtitle>You have a passion. However, not all of us can achieve big things on our own. Startup serves as a platform for you to connect with others
-            who have a skillset and share your passions in order to achieve something great.
-          </Subtitle>
-            <ButtonContainer>
-              <CallToAction>Sign up for free</CallToAction>
-              <CallToAction>Find out more</CallToAction>
-            </ButtonContainer>
-          </HomepageWrapper>
+              <Subtitle>Great products are made by teams. Startup serves as a platform for you to connect with others
+              who have a skillset and share your passions in order to achieve something great.
+              </Subtitle>
+              <ButtonContainer>
+                <CallToAction><Link to='/login'>Log in</Link></CallToAction>
+              </ButtonContainer>
+            </HomepageWrapper>
 
-        </Col>
-      </Row>
+          </Col>
+        </Row>
+      </ContentWrapper>
 
     </HomepageContainer>
   );

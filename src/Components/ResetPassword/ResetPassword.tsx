@@ -21,7 +21,6 @@ const ResetPassword = (props: ResetPasswordProps) => {
     const resetPasswordRequest = (payload: any) => axios.post(`${URL}/reset`, { ...payload, token }, { withCredentials: true });
 
     const responseHandler = (response: any, payload: any) => {
-        console.log(response)
         axios.post(`${URL}/login`, { user: { 'username': response.data.username, 'password': payload.password }}, { withCredentials: true }).then((res) => 
             props.login(response)
         )

@@ -32,7 +32,7 @@ export const Navbar = () => {
       </Col>
       <Col>
         <NavButtonWrapper>
-          <SecondaryButton><Link to={isLoggedIn ? '/' : '/profile'}>{isLoggedIn ? 'Your Profile' : 'Home'}</Link></SecondaryButton>
+          <SecondaryButton><Link to={isLoggedIn ? '/profile' : '/'}>{isLoggedIn ? 'Your Profile' : 'Home'}</Link></SecondaryButton>
           <SecondaryButton><Link to='/posts'>Posts</Link></SecondaryButton>
           { isLoggedIn && <SecondaryButton><Link to='/new'>Create post</Link></SecondaryButton>}
           <CallToAction onClick={onClick} >{isLoggedIn ? 'Log out' : 'Sign up'}</CallToAction>

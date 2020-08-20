@@ -9,8 +9,13 @@ export const FormWrapper = styled.div`
 
 export const FormRowWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   width: 80%;
   margin: 5px auto;
+  label {
+    font-weight: bold;
+    font-size: 14px;
+  }
 `;
 
 export const FormTitleWrapper = styled.div`
@@ -25,6 +30,10 @@ export const FormTitle = styled.h1`
 `;
 
 export const Footer = styled.div`
-  margin: 40px auto;
+  margin: 15px auto;
+  width: 80.5%;
+  button {
+    width: 100%;
+  }
 `;
 
