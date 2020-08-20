@@ -6,6 +6,7 @@ import { Form } from '../../Components/Form/Form';
 import { FooterText, FooterSpan, Footer } from './Login.components';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { User } from '../../App';
+import { Link, useHistory } from 'react-router-dom';
 
 const LoginContainer = styled(Container)`
   height: 100vh;
@@ -29,10 +30,11 @@ interface LoginProps {
 }
 
 export const Login = ({ logUserIn }: LoginProps) => {
-    
+    let history = useHistory();
     const loginResponseHandler = async (response: Promise<User>) => {
         const { username, email } = await response;
         logUserIn({ username, email });
+        history.push('/')
     };
 
     return (
@@ -51,7 +53,7 @@ export const Login = ({ logUserIn }: LoginProps) => {
                     </Col>
                     <Col lg={10} xl={8}>
                         <Footer>
-                            <FooterText>Forgotten your password?<FooterSpan>Reset it.</FooterSpan></FooterText>
+                            <FooterText>Forgotten your password?<FooterSpan><Link to="/resetpassword">Reset it.</Link></FooterSpan></FooterText>
                         </Footer>
                     </Col>
                 </Row>

@@ -7,6 +7,7 @@ import ResetPasswordForm from '../../Components/ResetPassword/ResetPasswordForm'
 import ResetPassword from '../../Components/ResetPassword/ResetPassword';
 
 import { User } from '../../App';
+import { Homepage } from '../Homepage/Homepage';
 
 export const UnauthenticatedApp = () => {
     const userContext = useContext(UserContext)
@@ -14,8 +15,9 @@ export const UnauthenticatedApp = () => {
     const logIn = (user: User) => userContext?.setUser(user)
     return ( 
         <>
+            <Route path='/' exact component={Homepage} />
             <Route path='/register' exact component={Registration} />
-            <Route path='/' exact>
+            <Route path='/login' exact>
                 <Login logUserIn={logIn} />
             </Route>
             <Route path='/resetpassword' exact component={ResetPasswordForm}/>
