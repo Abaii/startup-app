@@ -14,14 +14,14 @@ import { CallToAction } from "../../Button/Button.components";
 import axios from "axios";
 
 const PostForm = () => {
-  const [post_author] = useState("");
-  const [target_audience] = useState("");
-  const [idea_description] = useState("");
-  const [long_text] = useState("");
-  const [pronoun] = useState("");
-  const [tags] = useState("");
-  const [category] = useState("");
-  const [external_link] = useState("");
+  const [post_author, setPostAuthor] = useState("");
+  const [target_audience, setTargetAudience] = useState("");
+  const [idea_description, setDescription] = useState("");
+  const [long_text, setLongText] = useState("");
+  const [pronoun, setPronoun] = useState("");
+  const [tags, setTags] = useState("");
+  const [category, setCategory] = useState("");
+  const [external_link, setExternalLink] = useState("");
 
   const [payload, updatePayload] = useState({});
 
@@ -31,12 +31,13 @@ const PostForm = () => {
   //                                      "post_author": @minValidPostJson[:post_author],
   //                                      "category": @minValidPostJson[:category]}}
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (handler: any) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const newPayload = {
       ...payload,
       [e.currentTarget.name]: e.currentTarget.value,
     };
     updatePayload(newPayload);
+    handler(e.target.value);
   };
 
   const submitFunction = (payload: any) => {
@@ -45,7 +46,6 @@ const PostForm = () => {
 
   const onSubmit = async () => {
     const result = await submitFunction(payload);
-    responseHandler(result, payload);
     return result;
   };
 
@@ -60,7 +60,7 @@ const PostForm = () => {
               <HeaderInput
                 value={post_author}
                 name={"post_author"}
-                onChange={handleInputChange}
+                onChange={handleInputChange(setPostAuthor)}
                 placeholder="Name or Company name"
                 size={post_author.length}
                 maxLength={20}
@@ -69,7 +69,7 @@ const PostForm = () => {
               <HeaderInput
                 value={target_audience}
                 name={"target_audience"}
-                onChange={handleInputChange}
+                onChange={handleInputChange(setTargetAudience)}
                 size={target_audience.length}
                 placeholder="designer, developer, artists..."
                 maxLength={20}
@@ -78,7 +78,7 @@ const PostForm = () => {
               <HeaderInput
                 value={idea_description}
                 name={"idea_description"}
-                onChange={handleInputChange}
+                onChange={handleInputChange(setDescription)}
                 size={idea_description.length}
                 placeholder="your idea I.E our charity"
                 maxLength={20}
@@ -92,8 +92,8 @@ const PostForm = () => {
           <DescriptionContainer>
             <DescriptionInput
               value={long_text}
-              name={"idea_description"}
-              onChange={handleInputChange}
+              name={"long_text"}
+              onChange={handleInputChange(setLongText)}
               cols={40}
               rows={5}
               placeholder="Add any additional information"
