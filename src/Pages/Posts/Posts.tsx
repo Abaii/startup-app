@@ -18,7 +18,7 @@ const PostsWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 150px 0 50px 0;
+    margin: 100px 0 50px 0;
 `;
 
 const PostsSubtitle = styled.h3`
@@ -41,7 +41,6 @@ const Posts = () => (
     <Row>
       <Col lg={4} md={6}>
         <Card title="Wagwan g" />
-
       </Col>
       <Col lg={4} md={6}>
         <Card />
@@ -51,7 +50,6 @@ const Posts = () => (
       </Col>
       <Col lg={4} md={6}>
         <Card />
-
       </Col>
       <Col lg={4} md={6}>
         <Card />

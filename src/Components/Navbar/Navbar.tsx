@@ -11,15 +11,18 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../hooks/UserContext';
 import axios from 'axios'
 import { useHistory } from 'react-router-dom';
+import { SocketCtx } from '../../Pages/App/AuthenticatedApp';
 
 export const Navbar = () => {
 
   const userContext = useContext(UserContext);
+  const socket = useContext(SocketCtx);
+  console.log(socket)
   const isLoggedIn = !(userContext?.user === null);
   const history = useHistory();
   const onClick = 
     isLoggedIn ?
-       () => axios.delete('http://localhost:3001/logout', { withCredentials: true }).then(() => userContext?.setUser(null))
+      () => axios.delete('http://localhost:3001/logout', { withCredentials: true }).then(() => userContext?.setUser(null)).then(() => socket.emit('disconnect'))
     : () => history.push('/register')
   
   return (

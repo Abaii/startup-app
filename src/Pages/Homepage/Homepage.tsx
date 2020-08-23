@@ -6,7 +6,7 @@ import { CallToAction } from '../../Components/Button/Button.components';
 import { tokens } from '../../assets/tokens';
 import { UserContext } from '../../hooks/UserContext';
 import { Link } from 'react-router-dom';
-
+import { SocketCtx } from '../App/AuthenticatedApp';
 
 const HomepageContainer = styled(Container)`
   display: flex;
@@ -53,26 +53,28 @@ const ContentWrapper = styled.div`
 
 export const Homepage = () => {
   const val = useContext(UserContext);
-
+  const socket = useContext(SocketCtx);
+  console.log(socket)
   return (
     <HomepageContainer>
       <Navbar />
       <ContentWrapper>
         <Row>
-          <Col xs={8}>
+          <Col xs={6}>
             <HomepageWrapper>
               <Title>
                 Perfect partners for
-            <span> passionate</span>
+                <span>passionate</span>
                 {' '}
-            people
-          </Title>
+                people
+              </Title>
               <Subtitle>Great products are made by teams. Startup serves as a platform for you to connect with others
               who have a skillset and share your passions in order to achieve something great.
               </Subtitle>
               <ButtonContainer>
-                <CallToAction><Link to='/login'>Log in</Link></CallToAction>
+                {!val?.user && <CallToAction><Link to='/login'>Log in</Link></CallToAction>}
               </ButtonContainer>
+              <button onClick={() => socket.emit('hello', 'hello matey')}>click to send</button>
             </HomepageWrapper>
 
           </Col>
