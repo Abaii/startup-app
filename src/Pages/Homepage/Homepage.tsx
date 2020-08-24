@@ -6,7 +6,7 @@ import { CallToAction } from '../../Components/Button/Button.components';
 import { tokens } from '../../assets/tokens';
 import { UserContext } from '../../hooks/UserContext';
 import { Link } from 'react-router-dom';
-import { SocketCtx } from '../App/AuthenticatedApp';
+import { SocketCtx } from '../../App';
 
 const HomepageContainer = styled(Container)`
   display: flex;
@@ -53,8 +53,6 @@ const ContentWrapper = styled.div`
 
 export const Homepage = () => {
   const val = useContext(UserContext);
-  const socket = useContext(SocketCtx);
-  console.log(socket)
   return (
     <HomepageContainer>
       <Navbar />
@@ -63,7 +61,7 @@ export const Homepage = () => {
           <Col xs={6}>
             <HomepageWrapper>
               <Title>
-                Perfect partners for
+                Perfect partners for{" "}
                 <span>passionate</span>
                 {' '}
                 people
@@ -74,7 +72,6 @@ export const Homepage = () => {
               <ButtonContainer>
                 {!val?.user && <CallToAction><Link to='/login'>Log in</Link></CallToAction>}
               </ButtonContainer>
-              <button onClick={() => socket.emit('hello', 'hello matey')}>click to send</button>
             </HomepageWrapper>
 
           </Col>

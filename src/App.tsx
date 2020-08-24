@@ -6,6 +6,7 @@ import { UserContext } from './hooks/UserContext';
 import AuthenticatedApp from './Pages/App/AuthenticatedApp';
 import { UnauthenticatedApp } from './Pages/App/UnauthenticatedApp';
 import axios from "axios";
+import socketIOClient from 'socket.io-client';
 
 const GlobalStyle = createGlobalStyle`
   font-family: 'Baloo Bhaina 2',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -21,22 +22,26 @@ export interface User {
   username: string;
   email: string;
 }
+export let SocketCtx = createContext<any>(null);
 
+let socket: any = socketIOClient('http://localhost:4000');
 const App = () => {
+  SocketCtx = createContext(socket);
   
   const [user, setUser] = useState<User | null>(null);
   useEffect(() => {
-    console.log(user)
     axios.get('http://localhost:3001/whoami', { withCredentials: true }).then(response => setUser(response.data)).catch(err => setUser(null))
-  }, [])
-
+  }, []);
+  
   return (
   <Router>
     <GlobalStyle/>
     <Switch>
-      <UserContext.Provider value={{ user, setUser }}>
-        {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
-      </UserContext.Provider>
+      <SocketCtx.Provider value={socket}>
+        <UserContext.Provider value={{ user, setUser }}>
+          {user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+        </UserContext.Provider>
+      </SocketCtx.Provider>
     </Switch>
       
     

@@ -7,7 +7,7 @@ import { FooterText, FooterSpan, Footer } from './Login.components';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { User } from '../../App';
 import { Link, useHistory } from 'react-router-dom';
-import { SocketCtx } from '../App/AuthenticatedApp';
+import { SocketCtx } from '../../App';
 
 const LoginContainer = styled(Container)`
   height: 100vh;
@@ -32,16 +32,21 @@ interface LoginProps {
 
 interface UserWithId extends User {
     id: number;
+};
+
+interface LoginResponse {
+    data: UserWithId;
 }
 export const Login = ({ logUserIn }: LoginProps) => {
     let history = useHistory();
     const socket = useContext(SocketCtx);
-    const loginResponseHandler = async (response: Promise<UserWithId>) => {
-        const { id, username, email } = await response;
-        console.log(id)
+    const loginResponseHandler = async (response: Promise<LoginResponse>) => {
+        const { data } = await response;
+        const { id, username, email } = data;
+        
         logUserIn({ username, email });
-        socket.emit('login', {userId: id});
         history.push('/')
+        socket.emit('login', {userId: id });
     };
 
     return (
