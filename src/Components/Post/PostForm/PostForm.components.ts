@@ -1,5 +1,16 @@
-import styled from 'styled-components';
-import { headingStyles, descriptionStyles } from '../SharedStyles';
+import styled, { css } from 'styled-components';
+
+export const headingStyles = css`
+  font-size: 2.5vw;
+  font-weight: 700;
+  line-height: 1.6;
+`;
+
+export const descriptionStyles = css`
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 1.4;
+`;
 
 export const HeadingContainer = styled.div`
     display: flex;
@@ -22,7 +33,7 @@ export const DescriptionInput = styled.textarea`
     padding: 5px;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.2);
     min-width: 100%;
-`
+`;
 
 export const HeadingText = styled.h2`
     ${headingStyles};
@@ -38,4 +49,4 @@ export const HeaderInput = styled.input`
 export const ButtonWrapper = styled.div`
     display: flex;
     margin-top: 50px;
-`
+`;
