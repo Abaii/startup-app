@@ -1,37 +1,51 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 import {
   HeaderInput,
   HeadingText,
   HeadingContainer,
   DescriptionContainer,
-  DescriptionText,
   DescriptionInput,
   ButtonWrapper,
 } from "./PostForm.components";
-import { Container, Row, Col } from "react-bootstrap";
 import { Navbar } from "../../Navbar/Navbar";
 import { CallToAction } from "../../Button/Button.components";
-import axios from "axios";
+import { PostCategorySelector } from "./PostCategroySelector";
+import { PronounSelector } from "./PronounSelector";
+
+import bettering_tomorrow from "../../../assets/categories/bettering_tomorrow.svg";
+import business from "../../../assets/categories/business.svg";
+import community from "../../../assets/categories/community.svg";
+import technology from "../../../assets/categories/technology.svg";
+import the_arts from "../../../assets/categories/the_arts.svg";
+
+const categoryFormConfig = {
+  bettering_tomorrow: {
+    name: "Better Tomorrow",
+    image: bettering_tomorrow,
+  },
+  business: { name: "Business", image: business },
+  community: { name: "Community", image: community },
+  technology: { name: "Technology", image: technology },
+  the_arts: { name: "The Arts", image: the_arts },
+};
 
 const PostForm = () => {
   const [post_author, setPostAuthor] = useState("");
   const [target_audience, setTargetAudience] = useState("");
   const [idea_description, setDescription] = useState("");
   const [long_text, setLongText] = useState("");
-  const [pronoun, setPronoun] = useState("");
-  const [tags, setTags] = useState("");
-  const [category, setCategory] = useState("");
+  const [pronoun, setPronoun] = useState("We're");
+  const [category, setCategory] = useState("bettering_tomorrow");
   const [external_link, setExternalLink] = useState("");
+  const [tags, setTags] = useState("");
 
   const [payload, updatePayload] = useState({});
 
-  //   {"idea_description": "",
-  //                                      "target_audience": @minValidPostJson[:target_audience],
-  //                                      "pronoun": @minValidPostJson[:pronoun],
-  //                                      "post_author": @minValidPostJson[:post_author],
-  //                                      "category": @minValidPostJson[:category]}}
-
-  const handleInputChange = (handler: any) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (handler: any) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const newPayload = {
       ...payload,
       [e.currentTarget.name]: e.currentTarget.value,
@@ -41,7 +55,11 @@ const PostForm = () => {
   };
 
   const submitFunction = (payload: any) => {
-    axios.post("http://localhost:3001/post", { newPost: payload });
+    axios.post(
+      "http://localhost:3001/post",
+      { newPost: payload },
+      { withCredentials: true }
+    );
   };
 
   const onSubmit = async () => {
@@ -53,36 +71,50 @@ const PostForm = () => {
     <Container>
       <Navbar />
       <Row>
+        <PostCategorySelector
+          config={categoryFormConfig}
+          submitFunction={setCategory}
+          activeCategory={category}
+        />
+      </Row>
+      <Row>
         <Col>
           <HeadingContainer>
             <HeadingText>
-              Hey, we're{" "}
-              <HeaderInput
-                value={post_author}
-                name={"post_author"}
-                onChange={handleInputChange(setPostAuthor)}
-                placeholder="Name or Company name"
-                size={post_author.length}
-                maxLength={20}
-              />
-              And we are looking for{" "}
-              <HeaderInput
-                value={target_audience}
-                name={"target_audience"}
-                onChange={handleInputChange(setTargetAudience)}
-                size={target_audience.length}
-                placeholder="designer, developer, artists..."
-                maxLength={20}
-              />
-              for our{" "}
-              <HeaderInput
-                value={idea_description}
-                name={"idea_description"}
-                onChange={handleInputChange(setDescription)}
-                size={idea_description.length}
-                placeholder="your idea I.E our charity"
-                maxLength={20}
-              />
+              <Row>
+                Hey,{" "}
+                <PronounSelector onClick={setPronoun} activePronoun={pronoun} />
+                <HeaderInput
+                  value={post_author}
+                  name={"post_author"}
+                  onChange={handleInputChange(setPostAuthor)}
+                  placeholder="Name or Company name"
+                  size={post_author.length}
+                  maxLength={20}
+                />
+              </Row>
+              <Row>
+                And we are looking for{" "}
+                <HeaderInput
+                  value={target_audience}
+                  name={"target_audience"}
+                  onChange={handleInputChange(setTargetAudience)}
+                  size={target_audience.length}
+                  placeholder="designer, developer, artists..."
+                  maxLength={20}
+                />
+              </Row>
+              <Row>
+                for our{" "}
+                <HeaderInput
+                  value={idea_description}
+                  name={"idea_description"}
+                  onChange={handleInputChange(setDescription)}
+                  size={idea_description.length}
+                  placeholder="your idea I.E our charity"
+                  maxLength={20}
+                />
+              </Row>
             </HeadingText>
           </HeadingContainer>
         </Col>
