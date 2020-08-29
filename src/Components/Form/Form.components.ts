@@ -36,4 +36,3 @@ export const Footer = styled.div`
     width: 100%;
   }
 `;
-

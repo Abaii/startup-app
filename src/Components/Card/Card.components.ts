@@ -6,21 +6,24 @@ export const CardWrapper = styled.div`
     flex-direction: column;
     box-shadow: 0px 4px 16px rgb(0, 0, 0, 0.25);
     padding: 20px;
+    padding-bottom: 0;
     max-width: 400px;
     margin: 0 auto;
-    height: 320px;
+    height: 350px;
     border-radius: 2%;
     margin-bottom: 20px;
     background-color: whitesmoke;
     color: ${tokens.color.secondaryColor};
+    justify-content: space-evenly;
 `;
 
 export const Title = styled.h1`
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 1.2px;
-    margin: 20px 0;
+    margin: 10px 0;
     line-height: 1.6;
+    height: 100px;
 `;
 
 export const Subtitle = styled.h3`
@@ -28,6 +31,10 @@ export const Subtitle = styled.h3`
     opacity: 0.8;
     line-height: 1.6;
     margin-bottom: 20px;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 `;
 
 export const Icon = styled.div`
@@ -40,6 +47,7 @@ export const Icon = styled.div`
 export const Footer = styled.div`
     display: flex;
     align-items: center;
+    height: 10px;
 `;
 
 export const FooterText = styled.span`
