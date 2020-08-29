@@ -44,7 +44,7 @@ export const Login = ({ logUserIn }: LoginProps) => {
         const { data } = await response;
         const { id, username, email } = data;
         
-        logUserIn({ username, email });
+        logUserIn({ userId: id, username, email });
         history.push('/')
         socket.emit('login', {userId: id });
     };

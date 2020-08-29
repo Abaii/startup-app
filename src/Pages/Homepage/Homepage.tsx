@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Navbar } from '../../Components/Navbar/Navbar';
@@ -20,7 +20,6 @@ const Title = styled.h1`
   line-height: 1.3;
   margin-bottom: 2rem;
   color: ${tokens.color.secondaryColor};
-  letter-spacing: 1.4px;
   span {
     opacity: 0.5;
   }
@@ -53,6 +52,8 @@ const ContentWrapper = styled.div`
 
 export const Homepage = () => {
   const val = useContext(UserContext);
+  const socket = useContext(SocketCtx);
+  
   return (
     <HomepageContainer>
       <Navbar />

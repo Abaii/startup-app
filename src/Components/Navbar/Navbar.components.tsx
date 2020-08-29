@@ -43,3 +43,20 @@ export const NavButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
+
+export const NotiWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 999;
+`;
+
+export const NewNotiSymbol = styled.div`
+    position: absolute;
+    left: 20px;
+    bottom: 11px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+`;
