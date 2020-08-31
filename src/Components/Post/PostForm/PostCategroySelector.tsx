@@ -6,7 +6,7 @@ import {
   CategoryWrapper,
   ActiveCategoryWrapper,
 } from "./PostForm.components";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 export interface CategoryProperties {
   name: string;
@@ -19,7 +19,7 @@ interface PostCategorySelectorConfig {
 
 interface PostCategorySelectorProps {
   config: PostCategorySelectorConfig;
-  submitFunction: React.Dispatch<React.SetStateAction<string>>;
+  submitFunction: (newState: string, stateToChange: string) => void;
   activeCategory: string;
 }
 
@@ -27,14 +27,14 @@ export const PostCategorySelector = (props: PostCategorySelectorProps) => {
   const { submitFunction, config, activeCategory } = props;
   const categories = Object.keys(config);
 
-  const onSubmit = (category: string) => {
-    submitFunction(category);
+  const onClick = (categoryValue: string) => {
+    submitFunction(categoryValue, "category");
   };
   return (
     <CategoriesWrapper>
       {categories.map((categoryKey) => (
-        <Col onClick={() => onSubmit(categoryKey)}>
-          {activeCategory == categoryKey ? (
+        <Col onClick={() => onClick(categoryKey)}>
+          {activeCategory === categoryKey ? (
             <ActiveCategoryWrapper>
               <CategoryIcon src={config[categoryKey].image} alt={categoryKey} />
               <CategoryText>{config[categoryKey].name}</CategoryText>
