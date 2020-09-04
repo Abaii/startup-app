@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import styled from 'styled-components';
 import Card from '../../Components/Card/Card';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import Search from '../../Components/Search/Search';
 import { tokens } from '../../assets/tokens';
+import axios from 'axios';
+import { PartialPost } from '../../common/types';
 
 const PostsTitle = styled.h2`
     margin: 30px auto;
@@ -18,7 +20,7 @@ const PostsWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 150px 0 50px 0;
+    margin: 100px 0 50px 0;
 `;
 
 const PostsSubtitle = styled.h3`
@@ -26,7 +28,18 @@ const PostsSubtitle = styled.h3`
     color: ${tokens.color.secondaryColor};
 `;
 
-const Posts = () => (
+
+const Posts = () => {
+  const [postData, setPostData] = useState<PartialPost[]>();
+  
+  useEffect(() => {
+    (async () => {
+      const { data } = await axios.post('http://localhost:3001/getposts', { ids: [1, 2, 3, 4] }, { withCredentials: true });
+      setPostData(data.data);
+    })();
+  }, []);
+
+  return (
   <Container>
     <Navbar />
     <Row>
@@ -39,28 +52,15 @@ const Posts = () => (
       </Col>
     </Row>
     <Row>
-      <Col lg={4} md={6}>
-        <Card title="Wagwan g" />
-
-      </Col>
-      <Col lg={4} md={6}>
-        <Card />
-      </Col>
-      <Col lg={4} md={6}>
-        <Card />
-      </Col>
-      <Col lg={4} md={6}>
-        <Card />
-
-      </Col>
-      <Col lg={4} md={6}>
-        <Card />
-      </Col>
-      <Col lg={4} md={6}>
-        <Card />
-      </Col>
+      { postData && postData.map((post) => {
+        return (
+          <Col lg={4} md={6}>
+            <Card data={post} />
+          </Col>
+        )
+      })}
     </Row>
   </Container>
-);
+)};
 
 export default Posts;

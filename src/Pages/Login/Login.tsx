@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import { FooterText, FooterSpan, Footer } from './Login.components';
 import { Navbar } from '../../Components/Navbar/Navbar';
 import { User } from '../../App';
 import { Link, useHistory } from 'react-router-dom';
+import { SocketCtx } from '../../App';
 
 const LoginContainer = styled(Container)`
   height: 100vh;
@@ -29,12 +30,23 @@ interface LoginProps {
     logUserIn: (user: User) => void;
 }
 
+interface UserWithId extends User {
+    id: number;
+};
+
+interface LoginResponse {
+    data: UserWithId;
+}
 export const Login = ({ logUserIn }: LoginProps) => {
     let history = useHistory();
-    const loginResponseHandler = async (response: Promise<User>) => {
-        const { username, email } = await response;
-        logUserIn({ username, email });
+    const socket = useContext(SocketCtx);
+    const loginResponseHandler = async (response: Promise<LoginResponse>) => {
+        const { data } = await response;
+        const { id, username, email } = data;
+        
+        logUserIn({ userId: id, username, email });
         history.push('/')
+        socket.emit('login', {userId: id });
     };
 
     return (

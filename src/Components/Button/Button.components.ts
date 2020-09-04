@@ -17,6 +17,9 @@ const sharedStyles = css`
     transform: translateY(-2px);
     
   };
+  a {
+    color: inherit;
+  }
 `;
 
 export const CallToAction = styled.button`
