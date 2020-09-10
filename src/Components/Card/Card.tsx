@@ -21,7 +21,9 @@ const Card = (props: CardProps) => {
   const socket = useContext(SocketCtx);
   const user = useContext(UserContext);
   const onClick = () => {
-    socket.emit('send-notification', { userId: user_id, message: "A user has liked your app!"})
+    if (user?.user?.userId) {
+      socket.emit('send-notification', { senderId: user.user.userId, userId: user_id, message: "Another user has liked your app!"})
+    }
   };
   console.log(user_id, user)
   return (
