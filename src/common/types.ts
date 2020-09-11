@@ -16,3 +16,16 @@ export type PartialPost = Pick<
 >;
 
 export type PostCategory = Pick<Posts, 'category'>;
+
+export interface SinglePost {
+  user_id: number;
+  created_at: Date;
+  post_author: string;
+  category: string;
+  long_text: string;
+  external_link: string;
+  tags: string[];
+  line_one: string;
+  line_two: string;
+  line_three: string;
+}

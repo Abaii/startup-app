@@ -16,3 +16,10 @@ export const getAllPosts = async (callback: any) => {
   });
   callback(data.cards);
 };
+
+export const getPostData = async (postId: number, callback: any) => {
+  const { data } = await axios.get(`http://localhost:3001/post/${postId}`, {
+    withCredentials: true,
+  });
+  callback(data.post);
+};
