@@ -6,7 +6,7 @@ import {
 } from "./PostForm.components";
 
 interface PostCategorySelectorProps {
-  onClick: React.Dispatch<React.SetStateAction<string>>;
+  onClick: (newState: string, stateToChange: string) => void;
   activePronoun: string;
 }
 
@@ -16,20 +16,20 @@ export const PronounSelector = (props: PostCategorySelectorProps) => {
   return (
     <PronounWrapper>
       {activePronoun == "I'm" ? (
-        <ActivePronounText onClick={() => onClick("I'm")}>
+        <ActivePronounText onClick={() => onClick("I'm", "pronoun")}>
           I'm{" "}
         </ActivePronounText>
       ) : (
-        <InactivePronounText onClick={() => onClick("I'm")}>
+        <InactivePronounText onClick={() => onClick("I'm", "pronoun")}>
           I'm{" "}
         </InactivePronounText>
       )}
       {activePronoun == "We're" ? (
-        <ActivePronounText onClick={() => onClick("We're")}>
+        <ActivePronounText onClick={() => onClick("We're", "pronoun")}>
           We're{" "}
         </ActivePronounText>
       ) : (
-        <InactivePronounText onClick={() => onClick("We're")}>
+        <InactivePronounText onClick={() => onClick("We're", "pronoun")}>
           We're{" "}
         </InactivePronounText>
       )}
