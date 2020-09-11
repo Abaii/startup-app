@@ -31,6 +31,7 @@ export const HeadingContainer = styled.div`
 export const DescriptionContainer = styled.div`
   display: flex;
   margin-top: 50px;
+  min-width: 100%;
 `;
 
 export const DescriptionText = styled.span`
@@ -111,4 +112,21 @@ export const ActivePronounText = styled.span`
 export const PronounWrapper = styled.span`
   padding-left: 10px;
   padding-right: 10px;
+`;
+
+export const BodyInput = styled.input`
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 1.2;
+  border: none;
+  border-bottom: 1px solid black;
+  min-width: 200px;
+  margin-left: 20px;
+`;
+
+export const BodyInputWrapper = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 50px;
 `;
