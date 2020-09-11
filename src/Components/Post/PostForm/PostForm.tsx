@@ -8,6 +8,8 @@ import {
   DescriptionContainer,
   DescriptionInput,
   ButtonWrapper,
+  BodyInput,
+  BodyInputWrapper,
 } from "./PostForm.components";
 import { Navbar } from "../../Navbar/Navbar";
 import { CallToAction } from "../../Button/Button.components";
@@ -41,7 +43,10 @@ const PostForm = () => {
   const [external_link, setExternalLink] = useState("");
   const [tags, setTags] = useState("");
 
-  const [payload, updatePayload] = useState({});
+  const [payload, updatePayload] = useState({
+    pronoun: "We're",
+    category: "bettering_tomorrow",
+  });
 
   const handleInputChange = (handler: any) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -52,6 +57,29 @@ const PostForm = () => {
     };
     updatePayload(newPayload);
     handler(e.target.value);
+  };
+
+  const handleArrayChange = (handler: any) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const newPayload = {
+      ...payload,
+      [e.currentTarget.name]: [e.currentTarget.value],
+    };
+    updatePayload(newPayload);
+    handler([e.target.value]);
+  };
+
+  const handleStateChange = (handler: any) => (
+    newState: string,
+    stateToChange: string
+  ) => {
+    const newPayload = {
+      ...payload,
+      [stateToChange]: newState,
+    };
+    updatePayload(newPayload);
+    handler(newState);
   };
 
   const submitFunction = (payload: any) => {
@@ -73,7 +101,7 @@ const PostForm = () => {
       <Row>
         <PostCategorySelector
           config={categoryFormConfig}
-          submitFunction={setCategory}
+          submitFunction={handleStateChange(setCategory)}
           activeCategory={category}
         />
       </Row>
@@ -83,7 +111,10 @@ const PostForm = () => {
             <HeadingText>
               <Row>
                 Hey,{" "}
-                <PronounSelector onClick={setPronoun} activePronoun={pronoun} />
+                <PronounSelector
+                  onClick={handleStateChange(setPronoun)}
+                  activePronoun={pronoun}
+                />
                 <HeaderInput
                   value={post_author}
                   name={"post_author"}
@@ -101,7 +132,7 @@ const PostForm = () => {
                   onChange={handleInputChange(setTargetAudience)}
                   size={target_audience.length}
                   placeholder="designer, developer, artists..."
-                  maxLength={20}
+                  maxLength={30}
                 />
               </Row>
               <Row>
@@ -120,25 +151,50 @@ const PostForm = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          <DescriptionContainer>
-            <DescriptionInput
-              value={long_text}
-              name={"long_text"}
-              onChange={handleInputChange(setLongText)}
-              cols={40}
-              rows={5}
-              placeholder="Add any additional information"
-            />
-          </DescriptionContainer>
-        </Col>
+        <DescriptionContainer>
+          <DescriptionInput
+            value={long_text}
+            name={"long_text"}
+            onChange={handleInputChange(setLongText)}
+            cols={40}
+            rows={5}
+            maxLength={200}
+            placeholder="Add any additional information"
+          />
+        </DescriptionContainer>
       </Row>
       <Row>
         <Col>
-          <ButtonWrapper>
-            <CallToAction onClick={onSubmit}>Create post</CallToAction>
-          </ButtonWrapper>
+          <BodyInputWrapper>
+            URL:
+            <BodyInput
+              value={external_link}
+              name={"external_link"}
+              onChange={handleInputChange(setExternalLink)}
+              size={external_link.length}
+              placeholder="A link to your website"
+              maxLength={20}
+            />
+          </BodyInputWrapper>
         </Col>
+        <Col>
+          <BodyInputWrapper>
+            Tags:
+            <BodyInput
+              value={tags}
+              name={"tags"}
+              onChange={handleArrayChange(setTags)}
+              size={tags.length}
+              placeholder="An additional category"
+              maxLength={20}
+            />
+          </BodyInputWrapper>
+        </Col>
+      </Row>
+      <Row>
+        <ButtonWrapper>
+          <CallToAction onClick={onSubmit}>Create post</CallToAction>
+        </ButtonWrapper>
       </Row>
     </Container>
   );
