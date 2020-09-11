@@ -20,6 +20,9 @@ const ResetFormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const defaultResetValues = {
+    username: '',
+}
 
 const ResetPasswordForm = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -31,7 +34,8 @@ const ResetPasswordForm = () => {
     const responseHandler = async (email: string) => {
         setUserEmail(email);
         setCurrentStep(2)
-    }
+    };
+
     return (
         <Container>
             <Navbar />
@@ -40,6 +44,7 @@ const ResetPasswordForm = () => {
                     <Col>
                         {currentStep === 1 ?
                             <Form
+                                defaultValues={defaultResetValues}
                                 buttonText="Email me a reset link"
                                 submitFunction={resetRequest}
                                 responseHandler={responseHandler}

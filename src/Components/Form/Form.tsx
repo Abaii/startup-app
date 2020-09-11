@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {
-  FormWrapper, FormTitle, Footer, FormTitleWrapper
+  FormWrapper, FormTitle, FormTitleWrapper, Footer
 } from './Form.components';
 import { FormRow } from './FormRow';
 import { CallToAction } from '../../Components/Button/Button.components';
+import { FormikProps, Formik } from 'formik';
 
 export interface InputProperties {
   name: string;
@@ -21,38 +22,65 @@ interface FormProps {
   responseHandler: (response: any, payload?: any) => void;
   title?: string;
   buttonText: string;
+  defaultValues: any;
 }
 
-export const Form = (props: FormProps) => {
-  const {
-    submitFunction, config, responseHandler, title, buttonText,
-  } = props;
-  const rows = Object.keys(config);
-  const [payload, updatePayload] = useState({});
+interface FormContainerProps extends FormikProps<any> {
+  config: FormConfig;
+  buttonText: string;
+}
 
-  const onSubmit = async () => {
-    const result = await submitFunction(payload);
-    responseHandler(result, payload);
+const FormContainer = ({ config, buttonText, handleSubmit,values, ...formikProps }: FormContainerProps) => {
+  const rows = Object.keys(config);
+    return (
+      <>
+      {rows.map((rowKey) => (
+          <FormRow
+            inputs={config[rowKey]}
+            buttonText={buttonText} 
+            values={values}
+            handleSubmit={handleSubmit}
+            {...formikProps}
+          />
+      ))}
+        <Footer>
+          <CallToAction type="submit" onClick={() => handleSubmit(values)}>{buttonText}</CallToAction>
+        </Footer>
+      </>
+        
+    )
+}
+
+export const Form = ({
+  submitFunction, config, responseHandler, title, buttonText, defaultValues
+}: FormProps) => {
+  
+
+  const onSubmit = async (values: any) => {
+    console.log(values)
+    const result = await submitFunction(values);
+    responseHandler(result, values);
     return result;
   };
 
-  const updateInputValue = (inputName: string, inputValue: string) => {
-    const newPayload = { ...payload, [inputName]: inputValue };
-    updatePayload(newPayload);
-  };
-
   return (
-    <FormWrapper>
-      {title && <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>}
-      {rows.map((rowKey) => (
-        <FormRow
-          getInputValue={updateInputValue}
-          inputs={config[rowKey]}
-        />
-      ))}
-      <Footer>
-          <CallToAction onClick={onSubmit}>{buttonText}</CallToAction>
-      </Footer>
-    </FormWrapper>
+    
+      <FormWrapper>
+        {title && <FormTitleWrapper><FormTitle>{title || ''}</FormTitle></FormTitleWrapper>}
+        <Formik
+          onSubmit={onSubmit}
+          initialValues={defaultValues}
+        >
+          {(formikProps: FormikProps<any>) => (
+            <FormContainer 
+              {...formikProps}
+              config={config}
+              buttonText={buttonText}
+            />
+          )}
+        </Formik>
+        
+      </FormWrapper>
+   
   );
 };

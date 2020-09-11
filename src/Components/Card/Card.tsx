@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import {
   CardWrapper, Title, Icon, Subtitle, Footer, Divider, FooterText,
 } from './Card.components';
-import axios from 'axios';
 import { PartialPost } from '../../common/types';
 import { SocketCtx } from '../../App';
 import { CallToAction } from '../Button/Button.components';
 import { UserContext } from '../../hooks/UserContext';
-import { URL } from '../../common/constants';
 
 interface CardProps {
     data: PartialPost;
@@ -25,7 +23,7 @@ const Card = (props: CardProps) => {
       socket.emit('send-notification', { senderId: user.user.userId, userId: user_id, message: "Another user has liked your app!"})
     }
   };
-  console.log(user_id, user)
+
   return (
     <CardWrapper>
       <Icon />

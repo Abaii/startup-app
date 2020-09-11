@@ -15,6 +15,10 @@ interface ResetPasswordProps {
     login: (logIn: User) => void | undefined;
 };
 
+const defaultResetPassword = {
+    password: '',
+}
+
 const ResetPassword = (props: ResetPasswordProps) => {
     let { token } = useParams();
     let history = useHistory();
@@ -31,6 +35,7 @@ const ResetPassword = (props: ResetPasswordProps) => {
             <Row>
                 <Col>
                     <Form 
+                        defaultValues={defaultResetPassword}
                         buttonText="Change your password"
                         submitFunction={resetPasswordRequest}
                         config={resetPasswordConfig}

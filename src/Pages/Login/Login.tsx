@@ -25,6 +25,11 @@ const loginFormConfig = {
     row3: [{ name: 'Password', type: 'password', id: 'password' }],
 };
 
+const defaultLoginValues = {
+    username: '',
+    email: '',
+    password: ''
+}
 const loginRequest = (payload: any) => axios.post('http://localhost:3001/login', { user: payload }, {withCredentials: true});
 interface LoginProps {
     logUserIn: (user: User) => void;
@@ -56,6 +61,7 @@ export const Login = ({ logUserIn }: LoginProps) => {
                 <Row className="justify-content-center">
                     <Col lg={10} xl={8}>
                         <Form
+                            defaultValues={defaultLoginValues}
                             buttonText="Log in"
                             responseHandler={loginResponseHandler}
                             submitFunction={loginRequest}
