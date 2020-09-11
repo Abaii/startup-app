@@ -15,8 +15,7 @@ const sharedStyles = css`
   }
   &:hover {
     transform: translateY(-2px);
-    
-  };
+  }
   a {
     color: inherit;
   }
@@ -27,6 +26,7 @@ export const CallToAction = styled.button`
   border: 1px solid ${tokens.color.primaryColor};
   color: ${tokens.color.primaryColor};
   background-color: ${tokens.color.tertiaryColor};
+  margin-bottom: 10px;
 `;
 
 export const SecondaryButton = styled.button`
