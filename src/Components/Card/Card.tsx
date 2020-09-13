@@ -12,7 +12,6 @@ import { PartialPost } from "../../common/types";
 import { SocketCtx } from "../../App";
 import { CallToAction } from "../Button/Button.components";
 import { UserContext } from "../../hooks/UserContext";
-import { URL } from "../../common/constants";
 
 interface CardProps {
   data: PartialPost;
@@ -37,7 +36,7 @@ const Card = (props: CardProps) => {
   };
   return (
     <CardWrapper>
-      <Icon />
+      <Icon image="business"/>
       <Title>{idea_description || "Company name"}</Title>
       <Subtitle>{long_text || text}</Subtitle>
       <Divider />

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { tokens } from '../../assets/tokens';
 
 export const CardWrapper = styled.div`
@@ -35,12 +35,13 @@ export const Subtitle = styled.h3`
   text-overflow: ellipsis;
 `;
 
-export const Icon = styled.div`
+
+export const Icon = styled.div<{ image: string }>`
   width: 30px;
   min-height: 30px;
   border: 2px solid black;
   border-radius: 50%;
-  background-image: url(../../assets/categories/bettering_tomorrow.svg);
+  background-image: ${({ image }) => image && css`url(../../assets/categories/${image}.svg)`};
 `;
 
 export const Footer = styled.div`
