@@ -2,19 +2,16 @@ import React from 'react';
 import { FormRowWrapper } from './Form.components';
 import { InputProperties } from './Form';
 import { Input } from '../Input/Input';
-import styled from 'styled-components';
 import { FormikProps } from 'formik';
 import FormError from '../FormError/FormError';
-import { CallToAction } from '../Button/Button.components';
 
 interface FormRowProps extends FormikProps<any> {
   inputs: InputProperties[];
-  buttonText: string;
 }
 
 
 
-export const FormRow = ({inputs, buttonText, errors, setFieldValue, values, handleSubmit}: FormRowProps) => {
+export const FormRow = ({inputs, errors, setFieldValue, values, handleSubmit}: FormRowProps) => {
   return (
    <>
       <FormRowWrapper>
@@ -31,7 +28,8 @@ export const FormRow = ({inputs, buttonText, errors, setFieldValue, values, hand
                 id={input.id}
                 type={input.type}
               />
-              {errors[input.name] && <FormError>{errors[input.name]}</FormError>}
+             
+              {errors[input.id] && <FormError><span>{errors[input.id]}</span></FormError>}
             </>
           )
         })}

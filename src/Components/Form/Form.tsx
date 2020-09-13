@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   FormWrapper, FormTitle, FormTitleWrapper, Footer
 } from './Form.components';
 import { FormRow } from './FormRow';
 import { CallToAction } from '../../Components/Button/Button.components';
-import { FormikProps, Formik } from 'formik';
+import { FormikProps, Formik, FormikErrors } from 'formik';
 
 export interface InputProperties {
   name: string;
@@ -23,6 +23,7 @@ interface FormProps {
   title?: string;
   buttonText: string;
   defaultValues: any;
+  validate: (values: any) => FormikErrors<any>
 }
 
 interface FormContainerProps extends FormikProps<any> {
@@ -30,14 +31,13 @@ interface FormContainerProps extends FormikProps<any> {
   buttonText: string;
 }
 
-const FormContainer = ({ config, buttonText, handleSubmit,values, ...formikProps }: FormContainerProps) => {
+const FormContainer = ({ config, buttonText, handleSubmit, values, ...formikProps }: FormContainerProps) => {
   const rows = Object.keys(config);
     return (
       <>
       {rows.map((rowKey) => (
           <FormRow
             inputs={config[rowKey]}
-            buttonText={buttonText} 
             values={values}
             handleSubmit={handleSubmit}
             {...formikProps}
@@ -52,7 +52,7 @@ const FormContainer = ({ config, buttonText, handleSubmit,values, ...formikProps
 }
 
 export const Form = ({
-  submitFunction, config, responseHandler, title, buttonText, defaultValues
+  submitFunction, config, responseHandler, title, buttonText, defaultValues, validate
 }: FormProps) => {
   
 
@@ -70,6 +70,7 @@ export const Form = ({
         <Formik
           onSubmit={onSubmit}
           initialValues={defaultValues}
+          validate={validate}
         >
           {(formikProps: FormikProps<any>) => (
             <FormContainer 

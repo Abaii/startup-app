@@ -10,6 +10,7 @@ import {
   Footer,
 } from "./Registration.components";
 import { Navbar } from "../../Components/Navbar/Navbar";
+import { validate, RegistrationValues } from './Registration.validate';
 
 const RegistrationContainer = styled(Container)`
   height: 100vh;
@@ -34,14 +35,8 @@ const registrationRequest = (payload: any) =>
   axios.post("http://localhost:3001/register", { newUser: payload });
 
 const registrationResponseHandler = (response: Promise<any>) => response;
-interface DefaultRegistrationValues {
-  username: string
-  email: string
-  password: string
-  password_confirmation: string
-};
 
-const defaultRegistrationValues: DefaultRegistrationValues = {
+const defaultRegistrationValues: RegistrationValues = {
   username: '',
   email: '',
   password: '',
@@ -60,6 +55,7 @@ export const Registration = () => (
             config={registrationFormConfig}
             title="Sign up to get started."
             defaultValues={defaultRegistrationValues}
+            validate={validate}
           />
         </Col>
         <Col lg={10} xl={8}>

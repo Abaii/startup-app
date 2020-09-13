@@ -6,17 +6,20 @@ import axios from 'axios';
 import { URL } from '../../common/constants';
 import { useParams, useHistory } from 'react-router-dom';
 import { User } from '../../App';
+import { validate, ResetPasswordValues } from './ResetPassword.validate';
 
 const resetPasswordConfig = {
-    row1: [{ name: 'Enter new password', type: 'password', id: 'password'}]
+    row1: [{ name: 'Enter new password', type: 'password', id: 'password'}],
+    row2: [{ name: 'Confirm your password', type: 'password', id: 'passwordConfirm' }]
 };
 
 interface ResetPasswordProps {
     login: (logIn: User) => void | undefined;
 };
 
-const defaultResetPassword = {
+const defaultResetPassword: ResetPasswordValues = {
     password: '',
+    passwordConfirm: '',
 }
 
 const ResetPassword = (props: ResetPasswordProps) => {
@@ -41,6 +44,7 @@ const ResetPassword = (props: ResetPasswordProps) => {
                         config={resetPasswordConfig}
                         responseHandler={responseHandler}
                         title="Reset your password"
+                        validate={validate}
                     />
                 </Col>
             </Row>
