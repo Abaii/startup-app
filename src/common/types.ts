@@ -29,3 +29,13 @@ export interface SinglePost {
   line_two: string;
   line_three: string;
 }
+
+export interface UserProfile {
+  created_at: string;
+  interests: string[];
+  skills: string[];
+  url: string;
+  user_id: number;
+  username: string;
+  self: boolean;
+}

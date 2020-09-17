@@ -23,3 +23,21 @@ export const getPostData = async (postId: number, callback: any) => {
   });
   callback(data.post);
 };
+
+export const getUserProfile = async (userId: number, callback: any) => {
+  const { data } = await axios.get(`http://localhost:3001/user/${userId}`, {
+    withCredentials: true,
+  });
+  callback(data.profile);
+};
+
+export const getUserPosts = async (userId: number, callback: any) => {
+  const { data } = await axios.post(
+    'http://localhost:3001/getposts',
+    { ids: [userId] },
+    {
+      withCredentials: true,
+    },
+  );
+  callback(data.data);
+};
