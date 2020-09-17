@@ -29,6 +29,7 @@ export const FormTitle = styled.h1`
   font-weight: bold;
 `;
 
+
 export const Footer = styled.div`
   margin: 15px auto;
   width: 80.5%;
