@@ -6,6 +6,7 @@ import axios from 'axios';
 import RequestConfirmation from './RequestConfirmation';
 import { URL } from '../../common/constants';
 import styled from 'styled-components';
+import { validate, ResetPasswordFormValues } from './ResetPasswordForm.validate';
 
 const resetPasswordConfig = {
     row1: [{ name: 'Enter your username or email', type: 'text', id: 'username'}]
@@ -20,6 +21,9 @@ const ResetFormWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const defaultResetValues: ResetPasswordFormValues = {
+    username: '',
+}
 
 const ResetPasswordForm = () => {
     const [currentStep, setCurrentStep] = useState(1);
@@ -31,7 +35,8 @@ const ResetPasswordForm = () => {
     const responseHandler = async (email: string) => {
         setUserEmail(email);
         setCurrentStep(2)
-    }
+    };
+
     return (
         <Container>
             <Navbar />
@@ -40,11 +45,13 @@ const ResetPasswordForm = () => {
                     <Col>
                         {currentStep === 1 ?
                             <Form
+                                defaultValues={defaultResetValues}
                                 buttonText="Email me a reset link"
                                 submitFunction={resetRequest}
                                 responseHandler={responseHandler}
                                 config={resetPasswordConfig}
                                 title="Recover password"
+                                validate={validate}
                             /> :
                             <RequestConfirmation email={userEmail} />
                         }

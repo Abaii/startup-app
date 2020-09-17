@@ -8,6 +8,7 @@ import { Navbar } from '../../Components/Navbar/Navbar';
 import { User } from '../../App';
 import { Link, useHistory } from 'react-router-dom';
 import { SocketCtx } from '../../App';
+import { validate, LoginValues } from './Login.validate';
 
 const LoginContainer = styled(Container)`
   height: 100vh;
@@ -23,6 +24,13 @@ const loginFormConfig = {
     row1: [{ name: 'Username', type: 'text', id: 'username' }],
     row2: [{ name: 'Email', type: 'text', id: 'email' }],
     row3: [{ name: 'Password', type: 'password', id: 'password' }],
+};
+
+
+const defaultLoginValues: LoginValues = {
+    username: '',
+    email: '',
+    password: ''
 };
 
 const loginRequest = (payload: any) => axios.post('http://localhost:3001/login', { user: payload }, {withCredentials: true});
@@ -56,11 +64,13 @@ export const Login = ({ logUserIn }: LoginProps) => {
                 <Row className="justify-content-center">
                     <Col lg={10} xl={8}>
                         <Form
+                            defaultValues={defaultLoginValues}
                             buttonText="Log in"
                             responseHandler={loginResponseHandler}
                             submitFunction={loginRequest}
                             config={loginFormConfig}
                             title="Welcome back"
+                            validate={validate}
                         />
                     </Col>
                     <Col lg={10} xl={8}>

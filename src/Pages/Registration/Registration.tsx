@@ -10,6 +10,7 @@ import {
   Footer,
 } from "./Registration.components";
 import { Navbar } from "../../Components/Navbar/Navbar";
+import { validate, RegistrationValues } from './Registration.validate';
 
 const RegistrationContainer = styled(Container)`
   height: 100vh;
@@ -23,13 +24,11 @@ const RegistrationWrapper = styled.div`
 `;
 const registrationFormConfig = {
   row1: [
-    { name: "First Name", type: "text", id: "firstName" },
-    { name: "Last Name", type: "text", id: "surname" },
+    { name: "Username", type: "text", id: "username" },
   ],
   row2: [{ name: "Email", type: "text", id: "email" }],
-  row3: [{ name: "Role", type: "text", id: "role" }],
-  row4: [{ name: "Password", type: "password", id: "password" }],
-  row5: [{ name: "Confirm Password", type: "password", id: "passwordVerify" }],
+  row3: [{ name: "Password", type: "password", id: "password" }],
+  row4: [{ name: "Confirm Password", type: "password", id: "password_confirmation" }],
 };
 
 const registrationRequest = (payload: any) =>
@@ -37,6 +36,12 @@ const registrationRequest = (payload: any) =>
 
 const registrationResponseHandler = (response: Promise<any>) => response;
 
+const defaultRegistrationValues: RegistrationValues = {
+  username: '',
+  email: '',
+  password: '',
+  password_confirmation: '',
+}
 export const Registration = () => (
   <RegistrationContainer>
     <Navbar />
@@ -49,6 +54,8 @@ export const Registration = () => (
             submitFunction={registrationRequest}
             config={registrationFormConfig}
             title="Sign up to get started."
+            defaultValues={defaultRegistrationValues}
+            validate={validate}
           />
         </Col>
         <Col lg={10} xl={8}>
