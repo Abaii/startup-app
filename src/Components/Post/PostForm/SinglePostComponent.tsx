@@ -21,7 +21,7 @@ const SinglePostComponent = (props: SinglePostProps) => {
     <Container>
       <Navbar />
       <Row>
-        <Icon />
+        <Icon image="bettering_tomorrow" />
       </Row>
       <Row>
         <Col>
