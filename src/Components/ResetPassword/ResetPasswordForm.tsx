@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import RequestConfirmation from './RequestConfirmation';
 import { URL } from '../../common/constants';
+import { ApiResponse } from '../../common/types';
 import styled from 'styled-components';
 import { validate, ResetPasswordFormValues } from './ResetPasswordForm.validate';
 
@@ -29,13 +30,12 @@ const ResetPasswordForm = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [userEmail, setUserEmail] = useState('');
     const resetRequest = (payload: RequestPayload) => {
-        console.log(payload)
-        return axios.post(`${URL}/forgot`, payload, { withCredentials: true })
-    }
-    const responseHandler = async (email: string) => {
-        setUserEmail(email);
         setCurrentStep(2)
-    };
+        return axios.post(`${URL}/forgot`, payload, { withCredentials: true });
+    }
+    const responseHandler = async ({ data: { email } }: ApiResponse<{ email: string }>) => 
+        setUserEmail(email);
+    
 
     return (
         <Container>
@@ -50,7 +50,7 @@ const ResetPasswordForm = () => {
                                 submitFunction={resetRequest}
                                 responseHandler={responseHandler}
                                 config={resetPasswordConfig}
-                                title="Recover password"
+                                title="Don't worry it happens to the best of us"
                                 validate={validate}
                             /> :
                             <RequestConfirmation email={userEmail} />

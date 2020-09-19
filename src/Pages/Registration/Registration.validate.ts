@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: off */
 import { FormikErrors } from 'formik';
 
 export interface RegistrationValues {

@@ -12,7 +12,6 @@ interface NotifcationsDropdownProps {
 const NotificationsWrapper = styled.div`
     position: absolute;
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
-    height: 200px;
     overflow: auto;
     width: 80%;
     left: 17px;
@@ -26,12 +25,20 @@ const Notification = styled.div`
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 `;
 
+const EmptyNotifications = styled.div`
+    padding: 5px;
+    span {
+        font-size: 14px;
+        font-weight: 300;
+    }
+`;
+
 const NotifcationsDropdown = ({ notifications }: NotifcationsDropdownProps) => {
     return (
         <NotificationsWrapper>
-            {notifications.map((notification) => 
+            {notifications.length ? notifications.map((notification) => 
                 <Notification><span>{notification}</span></Notification>
-            )}
+            ) : <EmptyNotifications><span>You have no notifications</span></EmptyNotifications>}
         </NotificationsWrapper>
     )
 };

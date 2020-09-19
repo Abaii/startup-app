@@ -101,12 +101,14 @@ export const InactivePronounText = styled.span`
   color: #a3a3a3;
   padding-left: 5px;
   padding-right: 5px;
+  cursor: pointer;
 `;
 
 export const ActivePronounText = styled.span`
   ${headingStyles};
   padding-left: 5px;
   padding-right: 5px;
+  cursor: pointer;
 `;
 
 export const PronounWrapper = styled.span`

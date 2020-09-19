@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: 0 */
 import { FormikErrors } from "formik";
 
 export interface ResetPasswordValues {
@@ -15,6 +14,10 @@ export const validate = (values: ResetPasswordValues) => {
 
   if (!values.passwordConfirm) {
     errors.passwordConfirm = 'You must confirm your password.'
+  }
+
+  if (values.password !== values.passwordConfirm) {
+    errors.passwordConfirm = 'Your passwords do not match'
   }
 
   return errors;

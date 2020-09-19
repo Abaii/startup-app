@@ -25,4 +25,7 @@ export const FooterSpan = styled.span`
     color: ${tokens.color.tertiaryColor};
     font-weight: bold;
     text-decoration: underline;
+    a {
+        color: inherit;
+    }
 `;

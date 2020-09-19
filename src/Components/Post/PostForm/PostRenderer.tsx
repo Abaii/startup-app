@@ -3,6 +3,7 @@ import { Container } from "react-bootstrap";
 import { getPostData } from "../../../common/requests";
 import SinglePostComponent from "./SinglePostComponent";
 import { SinglePost } from "../../../common/types";
+import Loader from "../../Loader/Loader";
 
 interface PostRendererProps {
   postId: number;
@@ -17,7 +18,7 @@ const PostRenderer = (props: PostRendererProps) => {
   const visibleComponent = postData ? (
     <SinglePostComponent data={postData} />
   ) : (
-    <Container>LOADING</Container>
+    <Loader />
   );
   return visibleComponent;
 };

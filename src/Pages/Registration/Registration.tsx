@@ -11,6 +11,7 @@ import {
 } from "./Registration.components";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import { validate, RegistrationValues } from './Registration.validate';
+import { Link } from 'react-router-dom';
 
 const RegistrationContainer = styled(Container)`
   height: 100vh;
@@ -61,7 +62,7 @@ export const Registration = () => (
         <Col lg={10} xl={8}>
           <Footer>
             <FooterText>
-              Already got an account? <FooterSpan>Log in</FooterSpan>
+              Already got an account? <FooterSpan><Link to='/login'>Log in</Link></FooterSpan>
             </FooterText>
           </Footer>
         </Col>

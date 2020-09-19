@@ -26,5 +26,6 @@ module.exports = {
   rules: {
     'import/prefer-default-export': 'off',
     camelcase: 'off', // temporary till I got a better solution. Rails naming convention doesnt line up with react.
+    'import/extensions': 'off',
   },
 };

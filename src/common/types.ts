@@ -10,6 +10,10 @@ export interface Posts {
   tags: string[];
 }
 
+export interface ApiResponse<T> {
+  data: T;
+}
+
 export type PartialPost = Pick<
   Posts,
   'user_id' | 'idea_description' | 'post_author' | 'long_text' | 'category'

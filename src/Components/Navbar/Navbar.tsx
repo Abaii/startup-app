@@ -21,7 +21,7 @@ export const Navbar = () => {
 
   const userContext = useContext(UserContext);
   const socket = useContext(SocketCtx);
-  const userId = () => userContext?.user?.userId && userContext.user.userId
+  const userId = () => userContext?.user?.userId && userContext.user.userId;
   const isLoggedIn = !(userContext?.user === null);
   const history = useHistory();
   const onClick = 
@@ -30,7 +30,7 @@ export const Navbar = () => {
       .then(() => {
         userContext?.setUser(null);
         socket.emit('logout');
-      })
+      }).then(() => history.push('/'))
     : () => history.push('/register');
   const [showDropdown, setShowDropdown] = useState(false);
   const [newNotification, setNewNotification] = useState(false);
@@ -44,9 +44,7 @@ export const Navbar = () => {
     (async() => {
       axios.get('http://localhost:3001/notiflag', { withCredentials: true }).then(res => setNewNotification(res.data.notification_flag)).catch(err => console.log(err));
       const id = userId();
-      console.log(id, 'id')
       if (id) {
-        console.log('hit', id)
         axios.post(`${URL}/allnotis`, { receiverId: id }, { withCredentials: true }).then(res => setNotifications(res.data.data)).catch(err => console.log(err));
       }
     })();

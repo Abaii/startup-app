@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { UserProfile, PartialPost } from "../../common/types";
 import { getUserProfile } from "../../common/requests";
 import UserProfileComponent from "./UserProfileComponent";
+import Loader from '../Loader/Loader';
+import { Navbar } from '../Navbar/Navbar';
 
 interface ProfileRendererProps {
   profileId: number;
@@ -18,7 +20,14 @@ const ProfileRenderer = (props: ProfileRendererProps) => {
   const visibleComponent = profileData ? (
     <UserProfileComponent profileData={profileData} />
   ) : (
-    <Container>LOADING</Container>
+    <Container>
+      <Navbar />
+      <Row>
+        <Col>
+            <Loader />
+        </Col>
+      </Row>
+    </Container>
   );
   return visibleComponent;
 };

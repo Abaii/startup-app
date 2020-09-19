@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Loader from '../Loader/Loader';
 
 interface RequestConfirmationProps {
     username?: string;
@@ -20,11 +21,8 @@ const ConfirmationText = styled.span`
 const RequestConfirmation = ({ username, email }: RequestConfirmationProps ) => {
     return (
         <ConfirmationContainer>
-            <ConfirmationText>An email has been sent to {
-                    email ? `${email}` : `the email associated with the user ${username}` 
-                }
-                {" "} with details on how to reset your password
-            </ConfirmationText>
+            {email ? <ConfirmationText>An email has been sent to {email} with details on how to reset your password
+            </ConfirmationText> : <Loader />}
         </ConfirmationContainer>
     )
 };
