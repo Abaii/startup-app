@@ -40,7 +40,7 @@ export const Icon = styled.div<{ image: string }>`
   min-height: 30px;
   border: 2px solid black;
   border-radius: 50%;
-  background-image: ${({ image }) => image && css`url(../../assets/categories/${image}.svg)`};
+  background-image: ${({ image }) => image && css`url(src/assets/categories/${image}.svg)`};
 `;
 
 export const Footer = styled.div`
