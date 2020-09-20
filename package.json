@@ -12,7 +12,6 @@
     "@types/socket.io-client": "^1.4.33",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-    "eslint": "^7.9.0",
     "formik": "^2.1.5",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.3",
