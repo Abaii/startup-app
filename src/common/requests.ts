@@ -10,8 +10,8 @@ export const searchPosts = async (callback: any, searchTerm: string) => {
   callback(data.cards);
 };
 
-export const getAllPosts = async (callback: any) => {
-  const { data } = await axios.get('http://localhost:3001/post?page=1', {
+export const getAllPosts = async (callback: any, pageNumber: number) => {
+  const { data } = await axios.get(`http://localhost:3001/post?page=${pageNumber}`, {
     withCredentials: true,
   });
   callback(data.cards);

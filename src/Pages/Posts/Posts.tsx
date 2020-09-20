@@ -7,6 +7,7 @@ import Search from "../../Components/Search/Search";
 import { tokens } from "../../assets/tokens";
 import { getAllPosts } from "../../common/requests";
 import { PartialPost } from "../../common/types";
+import Pagination from '@material-ui/lab/Pagination';
 
 const PostsTitle = styled.h2`
   margin: 30px auto;
@@ -28,12 +29,24 @@ const PostsSubtitle = styled.h3`
   color: ${tokens.color.secondaryColor};
 `;
 
+const PaginationWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 50px 0;
+`
+
 const Posts = () => {
   const [postData, setPostData] = useState<PartialPost[]>();
+  const [page, setPage] = useState(1);
+  const handlePageChange = (event: any, value: number) => {
+    setPage(value)
+  }
 
   useEffect(() => {
-    getAllPosts(setPostData);
-  }, []);
+    getAllPosts(setPostData, page);
+    console.log('hit')
+  }, [page]);
 
   return (
     <Container>
@@ -58,6 +71,13 @@ const Posts = () => {
               </Col>
             );
           })}
+      </Row>
+      <Row>
+        <Col>
+          <PaginationWrapper>
+            <Pagination count={10} page={page} onChange={handlePageChange} size="large" color="primary" variant="outlined" shape="rounded"/>
+          </PaginationWrapper>
+        </Col>
       </Row>
     </Container>
   );
