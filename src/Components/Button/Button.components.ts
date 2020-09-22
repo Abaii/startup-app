@@ -1,21 +1,35 @@
 import styled, { css } from 'styled-components';
-import { tokens } from '../../assets/tokens';
 
 const sharedStyles = css`
-  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  height: 40px;
+  padding: 0 30px;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  will-change: transform;
+  margin-right: 10px;
+  font-size: 12px;
+  justify-content: center;
+  background: #18a097;
   font-weight: bold;
-  line-height: 1.5;
-  padding: 0.5em 2em;
-  transition: all 0.2s ease-in-out;
-  color: ${tokens.color.secondaryColor};
-  border-radius: 10px;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
+  border: 2px solid black;
+  background: none;
+
   &:hover {
-    transform: translateY(-2px);
+    background: darken(#18a097, 20%);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.2);
+    transform: translate3d(0, -2px, 0);
   }
+  &:active {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+    transform: translate3d(0, 1px, 0);
+  }
+
   a {
     color: inherit;
   }
@@ -23,14 +37,13 @@ const sharedStyles = css`
 
 export const CallToAction = styled.button`
   ${sharedStyles}
-  border: 1px solid ${tokens.color.primaryColor};
-  color: ${tokens.color.primaryColor};
-  background-color: ${tokens.color.tertiaryColor};
+  color: black;
   margin-bottom: 10px;
 `;
 
 export const SecondaryButton = styled.button`
   ${sharedStyles};
-  background: none;
+  color: black;
   border: none;
+  background: none;
 `;

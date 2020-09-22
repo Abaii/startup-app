@@ -57,7 +57,6 @@ export const Form = ({
   
 
   const onSubmit = async (values: any) => {
-    console.log(values)
     const result = await submitFunction(values);
     responseHandler(result, values);
     return result;

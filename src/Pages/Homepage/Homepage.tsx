@@ -7,6 +7,7 @@ import { tokens } from '../../assets/tokens';
 import { UserContext } from '../../hooks/UserContext';
 import { Link } from 'react-router-dom';
 import { SocketCtx } from '../../App';
+import Waves from '../../assets/categories/waves.svg';
 
 const HomepageContainer = styled(Container)`
   display: flex;
@@ -14,15 +15,17 @@ const HomepageContainer = styled(Container)`
   height: 100vh;
 `;
 
+const WaveContainer = styled(Container)`
+  padding: 0;
+  overflow: hidden;
+`
+
 const Title = styled.h1`
-  font-size: 42px;
+  font-size: 60px;
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: 2rem;
   color: ${tokens.color.secondaryColor};
-  span {
-    opacity: 0.5;
-  }
 `;
 
 const Subtitle = styled.p`
@@ -37,6 +40,9 @@ const HomepageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 14%;
 `;
 
 export const ButtonContainer = styled.div`
@@ -45,40 +51,59 @@ export const ButtonContainer = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex: 2;
 `;
+
+
+const ImageWrapper = styled.div`
+  position: relative;
+  height: 100%;
+  img {
+    width: 800px;
+    height: 100%;
+  }
+ 
+`
 
 export const Homepage = () => {
   const val = useContext(UserContext);
   const socket = useContext(SocketCtx);
   
   return (
-    <HomepageContainer>
-      <Navbar />
-      <ContentWrapper>
+    <>
+      <Container>
+        <Navbar />
+
+         
+            <Row>
+              <Col>
+                <HomepageWrapper>
+                  <Title>
+                    Perfect partners for{" "}
+                    <span>passionate</span>
+                    {' '}
+                    people
+                  </Title>
+                  <Subtitle>Teams make great projects. Startup serves as a platform for you to connect with others
+                  who have a skillset and share your passions in order to achieve something great.
+                  </Subtitle>
+                  <ButtonContainer>
+                    {!val?.user && <CallToAction><Link to='/login'>Log in</Link></CallToAction>}
+                  </ButtonContainer>
+                </HomepageWrapper>
+              </Col>
+            </Row>
+            
+          
+      </Container>
+      <WaveContainer fluid>
         <Row>
-          <Col xs={6}>
-            <HomepageWrapper>
-              <Title>
-                Perfect partners for{" "}
-                <span>passionate</span>
-                {' '}
-                people
-              </Title>
-              <Subtitle>Great products are made by teams. Startup serves as a platform for you to connect with others
-              who have a skillset and share your passions in order to achieve something great.
-              </Subtitle>
-              <ButtonContainer>
-                {!val?.user && <CallToAction><Link to='/login'>Log in</Link></CallToAction>}
-              </ButtonContainer>
-            </HomepageWrapper>
+          <Col>
+            <img src={Waves} alt="Wave icon" />
 
           </Col>
         </Row>
-      </ContentWrapper>
+      </WaveContainer>
 
-    </HomepageContainer>
+    </>
   );
 }
