@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     --blue-primary: '#4762e6';
     --secondary-color: '#e6e8f2';
     --third-color:'#4bd6f2';
-    background-color: var(--secondary-color);
   .MuiPaginationItem-sizeLarge {
     font-size: 20px !important;
     padding: 0 20px !important;

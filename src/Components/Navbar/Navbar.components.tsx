@@ -13,13 +13,15 @@ export const NavRow = styled(Row)`
 export const Title = styled.h1`
   font-size: 24px;
   margin-left: 10px;
-  font-weight: bold;
+  font-family: "Reislust";
 `;
 
 export const TitleWrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: -0.5rem;
+  cursor: pointer;
 `;
 export const LinkText = styled.span`
   font-size: 16px;
@@ -28,11 +30,33 @@ export const LinkText = styled.span`
 `;
 
 export const Logo = styled.div`
-    height: 29px;
-    width: 29px;
-    border: 3px black solid;
-    margin-bottom: 0.5rem;
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
 `;
+
+export const Triangle = styled.div`
+  position: relative;
+  top: -9px;
+  left: -3px;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 15px;
+  border-color: transparent transparent transparent #041814;
+  transform: rotate(270deg);
+
+`;
+
+export const Square = styled.div`
+  bottom: 0;
+  right: 0;
+  position: relative;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #041814;
+
+`
+
 
 export const LinkCol = styled(Col)`
     display: flex;

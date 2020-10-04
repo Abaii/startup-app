@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledInput = styled.input`
-  background-color: oldlace;
-  border-radius: 10px;
+
   border-width: 0;
   font-size: 1.6rem;
   margin: 2px;
   z-index: 1;
   padding: 10px;
   width: 100%;
+  border-bottom: 1px solid #041814;
 
   &:focus {
     outline: 0;

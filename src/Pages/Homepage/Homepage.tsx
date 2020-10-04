@@ -18,13 +18,15 @@ const HomepageContainer = styled(Container)`
 const WaveContainer = styled(Container)`
   padding: 0;
   overflow: hidden;
-`
+  position:fixed;
+  bottom: 0;
+`;
 
 const Title = styled.h1`
-  font-size: 60px;
+  font-size: 4.5vw;
   font-weight: 600;
   line-height: 1.3;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   color: ${tokens.color.secondaryColor};
 `;
 
@@ -32,7 +34,7 @@ const Subtitle = styled.p`
   line-height: 1.8;
   opacity: 0.8;
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 300;
   color: ${tokens.color.secondaryColor};
 `;
 
@@ -72,8 +74,6 @@ export const Homepage = () => {
     <>
       <Container>
         <Navbar />
-
-         
             <Row>
               <Col>
                 <HomepageWrapper>

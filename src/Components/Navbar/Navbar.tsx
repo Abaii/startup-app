@@ -5,7 +5,9 @@ import {
   Logo,
   TitleWrapper, NavButtonWrapper,
   NotiWrapper,
-  NewNotiSymbol
+  NewNotiSymbol,
+  Triangle,
+  Square,
 } from './Navbar.components';
 import { CallToAction, SecondaryButton } from '../Button/Button.components';
 import { Col } from 'react-bootstrap';
@@ -18,7 +20,6 @@ import NotificationsDropdown from '../NotificationsDropdown/NotificationsDropdow
 import { URL } from '../../common/constants';
 
 export const Navbar = () => {
-
   const userContext = useContext(UserContext);
   const socket = useContext(SocketCtx);
   const userId = () => userContext?.user?.userId && userContext.user.userId;
@@ -62,9 +63,12 @@ export const Navbar = () => {
   return (
     <NavRow>
       <Col xs={3}>
-        <TitleWrapper>
-          <Logo />
-          <Title>Startup</Title>
+        <TitleWrapper onClick={() => history.push('/')}>
+  
+            <Triangle/>
+            <Square/>
+
+          <Title>passsion</Title>
         </TitleWrapper>
       </Col>
       <Col>

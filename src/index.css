@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@font-face {
+  font-family: "Reislust";
+  src: local("Reislust"), url(./assets/Reislust.ttf) format("tff");
+}
 :root {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,7 +20,7 @@ body {
   height: 100vh;
   --primary-color: #4762e6;
   --secondary-color: whitesmoke;
-  color:  #262835 !important;
+  color:  #041814 !important;
 }
 
 code {
