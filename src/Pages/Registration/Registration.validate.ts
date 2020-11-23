@@ -28,7 +28,7 @@ export const validate = (values: RegistrationValues): FormikErrors<RegistrationV
     const passwordsAreEqual = values.password === values.password_confirmation;
     const passwordsAreNotEmpty = values.password && values.password_confirmation;
 
-    if (passwordsAreEqual && passwordsAreNotEmpty) {
+    if (!passwordsAreEqual && passwordsAreNotEmpty) {
         errors.password_confirmation = 'Your passwords do not match';
     }
     return errors;

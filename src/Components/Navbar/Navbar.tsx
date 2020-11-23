@@ -39,14 +39,17 @@ export const Navbar = () => {
   socket.on('get-noti', () => {
     setNewNotification(true);
   });
-  const mockedNotis = [{ message: 'Dave wants to connect'}];
+  
 
   useEffect(() => {
     (async() => {
-      axios.get('http://localhost:3001/notiflag', { withCredentials: true }).then(res => setNewNotification(res.data.notification_flag)).catch(err => console.log(err));
+      axios.get('http://localhost:3001/notiflag', { withCredentials: true })
+      .then(res => setNewNotification(res.data.notification_flag))
+      .catch(err => console.log(err));
       const id = userId();
       if (id) {
-        axios.post(`${URL}/allnotis`, { receiverId: id }, { withCredentials: true }).then(res => setNotifications(res.data.data)).catch(err => console.log(err));
+        axios.post(`${URL}/allnotis`, { receiverId: id }, { withCredentials: true })
+        .then(res => setNotifications(res.data.data)).catch(err => console.log(err));
       }
     })();
     
@@ -64,24 +67,20 @@ export const Navbar = () => {
     <NavRow>
       <Col xs={3}>
         <TitleWrapper onClick={() => history.push('/')}>
-  
             <Triangle/>
             <Square/>
-
           <Title>passsion</Title>
         </TitleWrapper>
       </Col>
       <Col>
         <NavButtonWrapper>
-          <SecondaryButton><Link to={isLoggedIn ? '/profile' : '/'}>{isLoggedIn ? 'Your Profile' : 'Home'}</Link></SecondaryButton>
           <SecondaryButton><Link to='/posts'>Posts</Link></SecondaryButton>
           { isLoggedIn && <SecondaryButton><Link to='/new'>Create post</Link></SecondaryButton>}
           <NotiWrapper>
-            {isLoggedIn && <SecondaryButton onClick={() => markAsRead()}> Notifications {newNotification && <NewNotiSymbol />}</SecondaryButton>}
+            {isLoggedIn && <SecondaryButton onClick={() => markAsRead()}>Notifications {newNotification && <NewNotiSymbol />}</SecondaryButton>}
             {showDropdown && <NotificationsDropdown notifications={notifications} />}
           </NotiWrapper>
           <CallToAction onClick={onClick} >{isLoggedIn ? 'Log out' : 'Sign up'}</CallToAction>
-
         </NavButtonWrapper>
       </Col>
     </NavRow>

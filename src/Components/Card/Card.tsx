@@ -25,7 +25,6 @@ const Card = (props: CardProps) => {
     idea_description,
     post_author,
     long_text,
-    category,
   } = props.data;
   const socket = useContext(SocketCtx);
   const user = useContext(UserContext);

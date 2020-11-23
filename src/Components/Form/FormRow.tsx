@@ -9,8 +9,6 @@ interface FormRowProps extends FormikProps<any> {
   inputs: InputProperties[];
 }
 
-
-
 export const FormRow = ({inputs, errors, setFieldValue, values, handleSubmit}: FormRowProps) => {
   return (
    <>

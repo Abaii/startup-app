@@ -55,7 +55,6 @@ export const Form = ({
   submitFunction, config, responseHandler, title, buttonText, defaultValues, validate
 }: FormProps) => {
   
-
   const onSubmit = async (values: any) => {
     const result = await submitFunction(values);
     responseHandler(result, values);
@@ -79,7 +78,6 @@ export const Form = ({
             />
           )}
         </Formik>
-        
       </FormWrapper>
    
   );

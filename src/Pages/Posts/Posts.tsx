@@ -1,51 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import styled from "styled-components";
 import Card from "../../Components/Card/Card";
 import { Navbar } from "../../Components/Navbar/Navbar";
 import Search from "../../Components/Search/Search";
-import { tokens } from "../../assets/tokens";
 import { getAllPosts } from "../../common/requests";
 import { PartialPost } from "../../common/types";
 import Pagination from '@material-ui/lab/Pagination';
+import {
+  PostsWrapper,
+  PostsSubtitle,
+  PostsTitle,
+  PaginationWrapper,
+  NoPosts,
+} from './Posts.components';
 
-const PostsTitle = styled.h2`
-  margin: 30px auto;
-  font-size: 52px;
-  font-weight: bold;
-  color: ${tokens.color.tertiaryColor};
-`;
-
-const PostsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 100px 0 50px 0;
-`;
-
-const PostsSubtitle = styled.h3`
-  font-size: 24px;
-  color: ${tokens.color.secondaryColor};
-`;
-
-const PaginationWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin: 50px 0;
-`
 
 const Posts = () => {
   const [postData, setPostData] = useState<PartialPost[]>();
   const [page, setPage] = useState(1);
-  const handlePageChange = (event: any, value: number) => {
+  const handlePageChange = (value: number) => {
     setPage(value)
   }
 
   useEffect(() => {
     getAllPosts(setPostData, page);
-    console.log('hit')
   }, [page]);
 
   return (
@@ -63,7 +41,10 @@ const Posts = () => {
         </Col>
       </Row>
       <Row>
-        {postData &&
+        {!postData?.length &&
+          <NoPosts>We couldn't find any posts.</NoPosts>
+        } 
+        {postData && postData.length &&
           postData.map((post) => {
             return (
               <Col lg={4} md={6}>
@@ -75,7 +56,13 @@ const Posts = () => {
       <Row>
         <Col>
           <PaginationWrapper>
-            <Pagination count={10} page={page} onChange={handlePageChange} size="large" color="primary" variant="outlined" shape="rounded"/>
+            <Pagination count={1} 
+              page={page} 
+              onChange={(e) => handlePageChange} 
+              size="large" 
+              color="primary" 
+              variant="outlined" 
+              shape="rounded"/>
           </PaginationWrapper>
         </Col>
       </Row>
